@@ -1,0 +1,70 @@
+# --- Unity (automatisch generierte Ordner) ---
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+*.unitypackage
+
+# --- Crash Dumps & Systeminfos ---
+sysinfo.txt
+*.stacktrace
+
+# --- OS-spezifische Dateien ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Unity Package Cache (wird automatisch geladen) ---
+Packages/[Pp]ackageCache/
+
+# --- Visual Studio / Rider / VS Code ---
+.vs/
+.idea/
+.vscode/
+
+# Projekt- und Builddateien (werden automatisch generiert)
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.suo
+*.tmp
+*.pdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# --- Visual Studio Konfiguration ---
+.vsconfig
+
+# --- Log-, Cache- und Backup-Dateien ---
+*.log
+*.bak
+*.tmp
+*.old
+
+# --- Build Artefakte ---
+[Bb]in/
+[Oo]bj/
+[Bb]uilds/
+ExportedObj/
+MemoryCaptures/
+
+# --- Package Manager ---
+# (Diese Dateien **nicht** ignorieren – sie gehören ins Repo)
+# Packages/manifest.json
+# Packages/packages-lock.json
+
+# --- Ignore any local test or backup folders (optional) ---
+[Tt]ests/Temp/
+[Tt]ests/Logs/
+
+# --- Unity Cloud Build ---
+unitycloud/
