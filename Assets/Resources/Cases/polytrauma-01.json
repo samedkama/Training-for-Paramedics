@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "caseId": "polytrauma-01",
+  "version": "2025-10-15",
+  "start": "q_conscious",
+  "nodes": {
+    "q_conscious": {
+      "type": "question",
+      "text": "Is the patient responsive?",
+      "options": [
+        { "key": "yes", "label": "Yes",  "effects": { "conscious": true  }, "next": "q_age" },
+        { "key": "no",  "label": "No",   "effects": { "conscious": false }, "next": "a_airway_check" }
+      ]
+    },
+    "q_age": {
+      "type": "question",
+      "guard": "state.conscious == true",
+      "text": "What is the patient’s age?",
+      "options": [
+        { "key": "child", "label": "< 12", "effects": { "ageGroup": "child" }, "next": "q_pain" },
+        { "key": "adult", "label": "≥ 12", "effects": { "ageGroup": "adult" }, "next": "q_pain" }
+      ]
+    },
+    "q_pain": {
+      "type": "question",
+      "text": "Does the patient have pain?",
+      "options": [
+        { "key": "y", "label": "Yes",  "effects": { "pain": true, "painScale": 7 }, "next": "end_info" },
+        { "key": "n", "label": "No",   "effects": { "pain": false }, "next": "end_info" }
+      ]
+    },
+    "a_airway_check": {
+      "type": "action",
+      "text": "Check airway and measure respiratory rate.",
+      "actions": ["measure_resp_rate"],
+      "next": "end_info"
+    },
+    "end_info": { "type": "end", "text": "Case flow ends (triage now)." }
+  }
+}

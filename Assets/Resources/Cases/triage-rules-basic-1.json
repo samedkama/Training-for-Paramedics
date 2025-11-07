@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "ruleSetId": "basic-1",
+  "redFlags": [
+    { "id": "unconscious", "expr": "conscious == false", "reason": "Unresponsive patient" },
+    { "id": "resp_crit",  "expr": "respRate < 8 || respRate > 30", "reason": "Critical respiration" }
+  ],
+  "yellowFlags": [
+    { "id": "pain_high", "expr": "pain == true && painScale >= 7", "reason": "Severe pain" }
+  ],
+  "greenDefaultReason": "No critical indicators found"
+}
