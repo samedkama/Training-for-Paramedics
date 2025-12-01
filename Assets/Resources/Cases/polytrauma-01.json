@@ -30,11 +30,12 @@
       ]
     },
     "a_airway_check": {
-      "type": "action",
-      "text": "Check airway and measure respiratory rate.",
-      "actions": ["measure_resp_rate"],
-      "next": "end_info"
-    },
+  "type": "action",
+  "text": "Check airway and measure respiratory rate.",
+  "actions": ["check_vitals"],
+  "next": "end_info"
+}
+,
     "end_info": { "type": "end", "text": "Case flow ends (triage now)." }
   }
 }

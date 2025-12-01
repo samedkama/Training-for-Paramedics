@@ -7,6 +7,8 @@ namespace VR.Triage.Engine
 {
     public class TriageEngine
     {
+        // TriageEngine uses a repository to load triage rules and evaluates patient state
+        // against these rules to determine triage category.
         readonly IRepository _repo;
         TriageRuleSet _rules;
 
@@ -20,7 +22,7 @@ namespace VR.Triage.Engine
         public TriageResult Evaluate(IDictionary<string, object> state)
         {
             var res = new TriageResult();
-            var redHits = Match(_rules.redFlags, state);
+            var redHits = Match(_rules.redFlags, state); // gets the info from dialouge if the user klicks on button 
             if (redHits.reasons.Count > 0)
             {
                 res.category = "Red";
@@ -41,6 +43,7 @@ namespace VR.Triage.Engine
             return res;
         }
 
+        // creates a list of matched rule ids and reasons based on evaluating the rules against the state
         (List<string> ids, List<string> reasons) Match(List<Rule> rules, IDictionary<string, object> state)
         {
             var ids = new List<string>();

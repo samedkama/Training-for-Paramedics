@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 
+// Main method: evaluates a boolean expression string (expr)
+// Example: "respiration < 8 && conscious == true"
+// Returns true or false based on the patient state dictionary.
+
 namespace VR.Triage.Core
 {
     public static class SimpleExpr
