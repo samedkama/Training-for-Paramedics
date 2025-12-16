@@ -19,16 +19,16 @@ public class SimpleUIController : MonoBehaviour
     public TMP_InputField painScaleInput;
 
     DialogueEngine _dialogue;
-    TriageEngine _triage;
+    // TriageEngine _triage; // not used at the moment
 
     async void Start()
     {
         var repo = new TextAssetRepository();
         _dialogue = new DialogueEngine(repo, null);
-        _triage = new TriageEngine(repo);
+        // _triage = new TriageEngine(repo);
 
         await _dialogue.LoadAsync("polytrauma-01");
-        await _triage.LoadRulesAsync("basic-1");
+        // await _triage.LoadRulesAsync("basic-1"); // wird erst beim Ende gebraucht
 
 
         if (vitalsPanel != null)
@@ -99,8 +99,13 @@ public class SimpleUIController : MonoBehaviour
         }
         else if (node.type == "end") // if end node, show triage result
         {
-            var result = _triage.Evaluate(_dialogue.State);
-            triageText.text = $"System Triage: <b>{result.category}</b>\n- " + string.Join("\n- ", result.reasons);
+            // Legacy-Triage (deaktiviert):
+            // var result = _triage.Evaluate(_dialogue.State);
+            // triageText.text = $"System Triage: <b>{result.category}</b>\n- " + string.Join("\n- ", result.reasons);
+
+            // Platzhalter: aktuell keine System-Triage
+            if (triageText != null)
+                triageText.text = "Case Completed.\n(System-Triage is currently out of use.)";
         }
     }
     // Wird vom Button im VitalsPanel aufgerufen

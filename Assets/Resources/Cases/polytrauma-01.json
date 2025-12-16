@@ -8,32 +8,569 @@
       "type": "question",
       "text": "Is the patient responsive?",
       "options": [
-        { "key": "yes", "label": "Yes",  "effects": { "conscious": true  }, "next": "q_age" },
-        { "key": "no",  "label": "No",   "effects": { "conscious": false }, "next": "a_airway_check" }
+        { "key": "yes", "label": "Yes",  "effects": { "conscious": true  }, "next": "q_orientation" },
+        { "key": "no",  "label": "No",   "effects": { "conscious": false }, "next": "a_check_vitals" }
       ]
     },
-    "q_age": {
+	"q_orientation": {
+  "type": "question",
+  "guard": "state.conscious == true",
+  "text": "Assess mental status: Does the patient appear oriented ?",
+  "options": [
+    { "key": "yes", "label": "Patient appears oriented", "effects": { "oriented": true }, "next": "a_check_vitals" },
+    { "key": "no",  "label": "Patient appears disoriented", "effects": { "oriented": false }, "next": "a_check_vitals" }
+  ]
+},
+"q_age": {
       "type": "question",
       "guard": "state.conscious == true",
       "text": "What is the patient’s age?",
       "options": [
-        { "key": "child", "label": "< 12", "effects": { "ageGroup": "child" }, "next": "q_pain" },
-        { "key": "adult", "label": "≥ 12", "effects": { "ageGroup": "adult" }, "next": "q_pain" }
+        { "key": "child", "label": "< 12", "effects": { "ageGroup": "child" }, "next": "a_check_vitals" },
+        { "key": "adult", "label": "≥ 12", "effects": { "ageGroup": "adult" }, "next": "a_check_vitals" },
+		{ "key": "adult", "label": "< 12", "effects": { "ageGroup": "adult" }, "next": "a_check_vitals" }
       ]
     },
-    "q_pain": {
-      "type": "question",
-      "text": "Does the patient have pain?",
-      "options": [
-        { "key": "y", "label": "Yes",  "effects": { "pain": true, "painScale": 7 }, "next": "end_info" },
-        { "key": "n", "label": "No",   "effects": { "pain": false }, "next": "end_info" }
-      ]
-    },
-    "a_airway_check": {
+"a_check_vitals": {
   "type": "action",
-  "text": "Check airway and measure respiratory rate.",
-  "actions": ["check_vitals"],
-  "next": "end_info"
+  "text": "Check the patient’s vital parameters using the monitoring panel (heart rate, respiratory rate, blood pressure, oxygen saturation).",
+  "actions": [ "open_vital_panel" ],
+  "next": "q_vitals_hr"
+},
+"q_vitals_hr": {
+  "type": "question",
+  "text": "Based on the monitoring panel: is the heart rate within an acceptable range for this patient?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "normal",
+      "effects": { "hrStatus": "normal" },
+      "next": "q_vitals_rr"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly abnormal",
+      "effects": { "hrStatus": "abnormal" },
+      "next": "q_vitals_rr"
+    },
+    {
+      "key": "critical",
+      "label": "critical",
+      "effects": { 
+        "hrStatus": "critical",
+        "vitalsCritical": true          
+      },
+      "next": "q_vitals_rr"
+    }
+  ]
+},
+"q_vitals_rr": {
+  "type": "question",
+  "text": "Based on the monitoring panel and observed breathing: is the respiratory rate and pattern acceptable?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "normal",
+      "effects": { "rrStatus": "normal" },
+      "next": "q_vitals_spo2"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly abnormal",
+      "effects": { "rrStatus": "abnormal" },
+      "next": "q_vitals_spo2"
+    },
+    {
+      "key": "critical",
+      "label": "critical",
+      "effects": { 
+        "rrStatus": "critical",
+        "vitalsCritical": true          
+      },
+      "next": "q_vitals_spo2"
+    }
+  ]
+},
+"q_vitals_spo2": {
+  "type": "question",
+  "text": "According to the pulse oximeter: is the oxygen saturation acceptable for this patient?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "normal",
+      "effects": { "spo2Status": "normal" },
+      "next": "q_vitals_bp"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly abnormal",
+      "effects": { "spo2Status": "abnormal" },
+      "next": "q_vitals_bp"
+    },
+    {
+      "key": "critical",
+      "label": "critical",
+      "effects": { 
+        "spo2Status": "critical",
+        "vitalsCritical": true          
+      },
+      "next": "q_vitals_bp"
+    }
+  ]
+},
+"q_vitals_bp": {
+  "type": "question",
+  "text": "Based on the blood pressure readings and clinical impression: is the circulation (blood pressure and perfusion) acceptable?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "normal",
+      "effects": { "bpStatus": "normal" },
+      "next": "a_emergency_management"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly abnormal",
+      "effects": { "bpStatus": "abnormal" },
+      "next": "a_emergency_management"
+    },
+     {
+      "key": "critical",
+      "label": "critical",
+      "effects": { 
+        "bpStatus": "critical",
+        "vitalsCritical": true         
+      },
+      "next": "a_emergency_management"
+    }
+  ]
+},
+"a_emergency_management": {
+  "type": "end",
+  "guard": "state.vitalsCritical == true",
+  "text": "The patient has at least one critically abnormal vital parameter. Do not continue the interview. Focus on life-saving treatment and rapid transport (triage: RED).",
+  "next": "q_next_if_stable"
+},
+"q_next_if_stable": {
+  "type": "question",
+  "text": "Vital signs are not in a critical range. You may proceed with further assessment.",
+  "options": [
+    {
+      "key": "continue",
+      "label": "Continue with further assessment",
+      "effects": {},
+      "next": "q_mechanism"
+    }
+  ]
+},
+"q_mechanism": {
+  "type": "question",
+  "text": "What type of event led to the patient's condition?",
+  "options": [
+    {
+      "key": "trauma",
+      "label": "Traumatic issue",
+      "effects": {
+        "caseType": "trauma"
+      },
+      "next": "q_trauma_mechanism_detail"
+    },
+    {
+      "key": "medical",
+      "label": "Non-traumatic medical issue",
+      "effects": {
+        "caseType": "medical"
+      },
+      "next": "q_chief_complaint"
+    }
+  ]
+},
+
+"q_trauma_mechanism_detail": {
+  "type": "question",
+  "text": "Please classify the trauma mechanism more precisely:",
+  "options": [
+    {
+      "key": "high_energy",
+      "label": "High-energy trauma",
+      "effects": {
+        "traumaMechanism": "high_energy",
+        "mechanismRisk": "high"
+      },
+      "next": "q_major_bleeding_or_shock"
+    },
+    {
+      "key": "moderate_energy",
+      "label": "Moderate-energy trauma",
+      "effects": {
+        "traumaMechanism": "moderate_energy",
+        "mechanismRisk": "moderate"
+      },
+      "next": "q_major_bleeding_or_shock"
+    },
+    {
+      "key": "low_energy",
+      "label": "Low-energy trauma",
+      "effects": {
+        "traumaMechanism": "low_energy",
+        "mechanismRisk": "low"
+      },
+      "next": "q_major_bleeding_or_shock"
+    }
+  ]
+},
+"q_major_bleeding_or_shock": {
+  "type": "question",
+  "text": "Is there any evidence of major bleeding or signs of shock?",
+  "options": [
+    {
+      "key": "no_bleeding",
+      "label": "No major bleeding and no signs of shock",
+      "effects": {
+        "bleedingRisk": "low",
+        "shockRisk": "low"
+      },
+      "next": "q_trauma_region_risk"
+    },
+    {
+      "key": "possible_bleeding",
+      "label": "Possible bleeding or early shock indicators",
+      "effects": {
+        "bleedingRisk": "moderate",
+        "shockRisk": "possible"
+      },
+      "next": "q_trauma_region_risk"
+    },
+    {
+      "key": "active_or_shock",
+      "label": "Active external bleeding OR clear signs of shock",
+      "effects": {
+        "bleedingRisk": "high",
+        "shockRisk": "high",
+        "symptomRedFlag": true
+      },
+      "next": "q_trauma_region_risk"
+    }
+  ]
+},
+"q_trauma_region_risk": {
+  "type": "question",
+  "text": "Which body region appears to be significantly affected based on the trauma assessment?",
+  "options": [
+    {
+      "key": "thorax",
+      "label": "Thoracic injury",
+      "effects": {
+        "traumaRegion": "thorax",
+        "regionRisk": "high"
+      },
+      "next": "q_concussion_redflags"
+    },
+    {
+      "key": "abdomen",
+      "label": "Abdominal injury",
+      "effects": {
+        "traumaRegion": "abdomen",
+        "regionRisk": "high"
+      },
+      "next": "q_concussion_redflags"
+    },
+    {
+      "key": "pelvis_long_bones",
+      "label": "Pelvis or long-bone injury",
+      "effects": {
+        "traumaRegion": "pelvis_or_long_bones",
+        "regionRisk": "high"
+      },
+      "next": "q_concussion_redflags"
+    },
+    {
+      "key": "extremity_minor",
+      "label": "Minor extremity injury",
+      "effects": {
+        "traumaRegion": "extremity_minor",
+        "regionRisk": "low"
+      },
+      "next": "q_concussion_redflags"
+    }
+  ]
+},
+"q_concussion_redflags": {
+  "type": "question",
+  "text": "After the impact, does the patient show any red-flag signs of possible serious brain injury?",
+  "options": [
+    {
+      "key": "no_red_flags",
+      "label": "No red-flag signs",
+      "effects": {
+        "concussionRisk": "low",
+        "symptomSeverity": "mild",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "uncertain",
+      "label": "Unclear or mild symptoms",
+      "effects": {
+        "concussionRisk": "uncertain",
+        "symptomSeverity": "moderate",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "red_flag",
+      "label": "Red-flag signs",
+      "effects": {
+        "concussionRisk": "high",
+        "symptomSeverity": "severe",
+        "symptomRedFlag": true
+      },
+      "next": "end_info"
+    }
+  ]
+},
+"q_chief_complaint": {
+  "type": "question",
+  "text": "What is the patient's primary medical complaint or main problem right now?",
+  "options": [
+    {
+      "key": "breathing_problem",
+      "label": "Breathing difficulty",
+      "effects": { "chiefComplaint": "dyspnea" },
+      "next": "q_dyspnea_severity"
+    },
+    {
+      "key": "chest_pain",
+      "label": "Chest pain or pressure",
+      "effects": { "chiefComplaint": "chest_pain" },
+      "next": "q_chest_pain_redflags"
+    },
+    {
+      "key": "neuro_deficit",
+      "label": "Altered mental status or neurological deficit",
+      "effects": { "chiefComplaint": "neurologic" },
+      "next": "q_neuro_redflags"
+    },
+    {
+      "key": "abdominal_pain",
+      "label": "Abdominal pain",
+      "effects": { "chiefComplaint": "abdominal" },
+      "next": "q_abdominal_redflags"
+    },
+    {
+      "key": "other",
+      "label": "Other medical complaint",
+      "effects": { "chiefComplaint": "other" },
+      "next": "q_unspecific_severity"
+    }
+  ]
+},
+"q_dyspnea_severity": {
+  "type": "question",
+  "text": "How severe is the patient's breathing difficulty based on your impression and the vital signs?",
+  "options": [
+    {
+      "key": "mild",
+      "label": "Mild shortness of breath",
+      "effects": {
+        "dyspneaSeverity": "mild",
+        "symptomSeverity": "mild",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "moderate",
+      "label": "Moderate shortness of breath )",
+      "effects": {
+        "dyspneaSeverity": "moderate",
+        "symptomSeverity": "moderate",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "severe",
+      "label": "Severe respiratory distress",
+      "effects": {
+        "dyspneaSeverity": "severe",
+        "symptomSeverity": "severe",
+        "symptomRedFlag": true
+      },
+      "next": "end_info"
+    }
+  ]
+},
+"q_chest_pain_redflags": {
+  "type": "question",
+  "text": "How would you classify the patient's chest pain based on intensity and associated symptoms?",
+  "options": [
+    {
+      "key": "non_critical",
+      "label": "Non-typical or mild chest pain",
+      "effects": {
+        "chestPainRisk": "low",
+        "symptomSeverity": "mild",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "concerning",
+      "label": "Concerning chest pain ",
+      "effects": {
+        "chestPainRisk": "moderate",
+        "symptomSeverity": "moderate",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "red_flag",
+      "label": "Red-flag chest pain ",
+      "effects": {
+        "chestPainRisk": "high",
+        "symptomSeverity": "severe",
+        "symptomRedFlag": true
+      },
+      "next": "end_info"
+    }
+  ]
+},
+"q_neuro_redflags": {
+  "type": "question",
+  "text": "Does the patient show any acute neurological red-flag symptoms?",
+  "options": [
+    {
+      "key": "no_red_flags",
+      "label": "No clear focal deficits ",
+      "effects": {
+        "neuroRisk": "low",
+        "symptomSeverity": "mild",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "uncertain",
+      "label": "Unsure / subtle changes ",
+      "effects": {
+        "neuroRisk": "uncertain",
+        "symptomSeverity": "moderate",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "red_flag",
+      "label": "Clear red flags ",
+      "effects": {
+        "neuroRisk": "high",
+        "symptomSeverity": "severe",
+        "symptomRedFlag": true
+      },
+      "next": "end_info"
+    }
+  ]
+},
+"q_abdominal_redflags": {
+  "type": "question",
+  "text": "How does the patient's abdominal pain appear in terms of severity and risk?",
+  "options": [
+    {
+      "key": "mild",
+      "label": "Mild, localized abdominal pain",
+      "effects": {
+        "abdominalRisk": "low",
+        "symptomSeverity": "mild",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "moderate",
+      "label": "Moderate pain",
+      "effects": {
+        "abdominalRisk": "moderate",
+        "symptomSeverity": "moderate",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "red_flag",
+      "label": "Severe or red-flag abdominal pain",
+      "effects": {
+        "abdominalRisk": "high",
+        "symptomSeverity": "severe",
+        "symptomRedFlag": true
+      },
+      "next": "end_info"
+    }
+  ]
+},
+"q_unspecific_severity": {
+  "type": "question",
+  "text": "Based on your overall impression, how serious is the patient's current problem?",
+  "options": [
+    {
+      "key": "mild",
+      "label": "Mild, non-specific complaint",
+      "effects": {
+        "unspecificSeverity": "mild",
+        "symptomSeverity": "mild",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "moderate",
+      "label": "Moderate complaint ",
+      "effects": {
+        "unspecificSeverity": "moderate",
+        "symptomSeverity": "moderate",
+        "symptomRedFlag": false
+      },
+      "next": "end_info"
+    },
+    {
+      "key": "severe",
+      "label": "Severe or worrying complaint",
+      "effects": {
+        "unspecificSeverity": "severe",
+        "symptomSeverity": "severe",
+        "symptomRedFlag": true
+      },
+      "next": "end_info"
+    }
+  ]
+},
+
+    "q_pain_scale": {
+  "type": "question",
+  "text": "On a scale from 0 to 10, how severe is the patient's pain?",
+  "options": [
+    {
+      "key": "pain_0_3",
+      "label": "0–3 (mild pain)",
+      "effects": { "painLevel": "mild" },
+      "next": "q_next_assessment_step"
+    },
+    {
+      "key": "pain_4_6",
+      "label": "4–6 (moderate pain)",
+      "effects": { "painLevel": "moderate" },
+      "next": "q_next_assessment_step"
+    },
+    {
+      "key": "pain_7_10",
+      "label": "7–10 (severe pain)",
+      "effects": { "painLevel": "severe", "vitalsCritical": true },
+      "next": "a_emergency_management"
+    }
+  ]
 }
 ,
     "end_info": { "type": "end", "text": "Case flow ends (triage now)." }

@@ -8,10 +8,128 @@
       "type": "question",
       "text": "Is the patient responsive?",
       "options": [
-        { "key": "yes", "label": "Yes",  "effects": { "conscious": true  }, "next": "q_age" },
+        { "key": "yes", "label": "Yes",  "effects": { "conscious": true  }, "next": "q_orientation" },
         { "key": "no",  "label": "No",   "effects": { "conscious": false }, "next": "a_airway_check" }
       ]
     },
+	"q_orientation": {
+  "type": "question",
+  "guard": "state.conscious == true",
+  "text": "Assess mental status: Does the patient appear oriented ?",
+  "options": [
+    { "key": "yes", "label": "Patient appears oriented", "effects": { "oriented": true }, "next": "q_age" },
+    { "key": "no",  "label": "Patient appears disoriented", "effects": { "oriented": false }, "next": "q_age" }
+  ]
+},
+"a_check_vitals": {
+  "type": "action",
+  "text": "Check the patient’s vital parameters using the monitoring panel (heart rate, respiratory rate, blood pressure, oxygen saturation).",
+  "actions": [ "open_vital_panel" ],
+  "next": "q_vitals_hr"
+},
+"q_vitals_hr": {
+  "type": "question",
+  "text": "Based on the monitoring panel: is the heart rate within an acceptable range for this patient?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "Within normal range",
+      "effects": { "hrStatus": "normal" },
+      "next": "q_vitals_rr"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly abnormal (but not immediately life-threatening)",
+      "effects": { "hrStatus": "abnormal" },
+      "next": "q_vitals_rr"
+    },
+    {
+      "key": "critical",
+      "label": "Critically abnormal (tachycardia/bradycardia with concern for shock or instability)",
+      "effects": { "hrStatus": "critical" },
+      "next": "q_vitals_rr"
+    }
+  ]
+},
+"q_vitals_rr": {
+  "type": "question",
+  "text": "Based on the monitoring panel and observed breathing: is the respiratory rate and pattern acceptable?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "Within normal range and breathing appears adequate",
+      "effects": { "rrStatus": "normal" },
+      "next": "q_vitals_spo2"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly abnormal (increased or decreased rate but no immediate failure)",
+      "effects": { "rrStatus": "abnormal" },
+      "next": "q_vitals_spo2"
+    },
+    {
+      "key": "critical",
+      "label": "Critically abnormal (very high/low rate or signs of respiratory failure)",
+      "effects": { "rrStatus": "critical" },
+      "next": "q_vitals_spo2"
+    }
+  ]
+},
+"q_vitals_spo2": {
+  "type": "question",
+  "text": "According to the pulse oximeter: is the oxygen saturation acceptable for this patient?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "Within acceptable range",
+      "effects": { "spo2Status": "normal" },
+      "next": "q_vitals_bp"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly reduced but not immediately critical",
+      "effects": { "spo2Status": "abnormal" },
+      "next": "q_vitals_bp"
+    },
+    {
+      "key": "critical",
+      "label": "Critically low saturation indicating severe hypoxia",
+      "effects": { "spo2Status": "critical" },
+      "next": "q_vitals_bp"
+    }
+  ]
+},
+"q_vitals_bp": {
+  "type": "question",
+  "text": "Based on the blood pressure readings and clinical impression: is the circulation (blood pressure and perfusion) acceptable?",
+  "options": [
+    {
+      "key": "normal",
+      "label": "Blood pressure and perfusion appear acceptable",
+      "effects": { "bpStatus": "normal" },
+      "next": "end_info"
+    },
+    {
+      "key": "abnormal",
+      "label": "Mildly abnormal (borderline low or high, but patient appears stable)",
+      "effects": { "bpStatus": "abnormal" },
+      "next": "end_info"
+    },
+    {
+      "key": "critical",
+      "label": "Critically abnormal (hypotension or hypertensive crisis with concern for shock or organ damage)",
+      "effects": { "bpStatus": "critical" },
+      "next": "end_info"
+    }
+  ]
+},
+"a_emergency_management": {
+  "type": "action",
+  "guard": "state.hrStatus == 'critical' || state.rrStatus == 'critical' || state.spo2Status == 'critical' || state.bpStatus == 'critical'",
+  "text": "One or more vital signs are in a critical range. Focus on immediate life-saving treatment and rapid transport. Do not spend time on detailed history; ask only very brief questions if they change management.",
+  "actions": [ "call_for_help", "prepare_rapid_transport" ],
+  "next": "end_info"
+},
     "q_age": {
       "type": "question",
       "guard": "state.conscious == true",

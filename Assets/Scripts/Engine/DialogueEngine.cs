@@ -22,13 +22,13 @@ namespace VR.Triage.Engine
         public string CurrentNodeId { get; private set; }
         // Shared state for the dialogue (vital signs, flags, etc.)
         // will be used for triage evaluation
-    public Dictionary<string, object> State { get; } = new();
+        public Dictionary<string, object> State { get; } = new();
 
-      
+
 
         public DialogueEngine(IRepository repo, IActionRunner actions)
         {
-            _repo = repo; _actions = actions; 
+            _repo = repo; _actions = actions;
         }
         // Loads a case by its ID and sets the current node to the case's start node
         public async Task LoadAsync(string caseId)

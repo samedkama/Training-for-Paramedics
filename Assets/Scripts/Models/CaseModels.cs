@@ -30,7 +30,7 @@ namespace VR.Triage.Models
         public string next; // next node id when this option is selected
     }
 
-    public class TriageRuleSet
+   /* public class TriageRuleSet
     {
         // Logic for triage evaluation
         public int schemaVersion; // version Controll for JSON Schema
@@ -54,4 +54,5 @@ namespace VR.Triage.Models
         public List<string> reasons = new(); // reasons for the triage category
         public List<string> matchedRules = new(); // matched rule ids
     }
+   */
 }

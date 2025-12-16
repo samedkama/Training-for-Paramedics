@@ -15,7 +15,7 @@ namespace VR.Triage.Repo
             await Task.Yield(); // Simulate async operation, waits until the ui is loaded 
             return JsonConvert.DeserializeObject<CaseDefinition>(json); // Convert JSON to CaseDefinition object, kind of like parsing
         }
-
+        /*
         public async Task<TriageRuleSet> LoadRuleSetAsync(string ruleSetId)
         // same thing here but for triage rules
         {
@@ -25,5 +25,6 @@ namespace VR.Triage.Repo
             await Task.Yield();
             return JsonConvert.DeserializeObject<TriageRuleSet>(json);
         }
+        */
     }
 }
