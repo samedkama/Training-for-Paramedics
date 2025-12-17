@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
-/// <summary>
-/// Enum representing triage categories.
-/// </summary>
 public enum TriageType
 {
     Green,
@@ -21,7 +18,7 @@ public enum TriageType
 [System.Serializable]
 public class TriagePromptGroup
 {
-    public TriageType triageType;       // Selected from dropdown
+    public TriageType triageType;
     [TextArea(3, 10)]
     public List<string> prompts = new List<string>();
 }
@@ -38,6 +35,9 @@ public class ChatManager : MonoBehaviour
     [Header("Check Button")]
     public Button checkAnswerButton;
 
+    [Header("Patient Card UI")]
+    public PatientCardUI patientCardUI;
+
     [Header("API Settings")]
     public string apiKey;
 
@@ -49,15 +49,20 @@ public class ChatManager : MonoBehaviour
     public List<TriagePromptGroup> triageGroups;
 
     private TriageType currentTriage;
+
+    // ✅ только кейс (первые строки с пациентом и т.п.)
+    private string currentCasePrompt;
+
+    // ✅ полный промпт для GPT (base + кейс)
     private string currentFullPrompt;
 
     private static readonly HttpClient client = new HttpClient();
 
     private void Start()
     {
-        sendButton.onClick.AddListener(SendUserMessage);
-        newChatButton.onClick.AddListener(StartNewCase);
-        checkAnswerButton.onClick.AddListener(OnCheckAnswer);
+        if (sendButton != null) sendButton.onClick.AddListener(SendUserMessage);
+        if (newChatButton != null) newChatButton.onClick.AddListener(StartNewCase);
+        if (checkAnswerButton != null) checkAnswerButton.onClick.AddListener(OnCheckAnswer);
 
         StartNewCase();
     }
@@ -67,49 +72,73 @@ public class ChatManager : MonoBehaviour
     // -----------------------------------------------------
     private void StartNewCase()
     {
-        chatHistory.text = "";
-        inputField.text = "";
-        scrollRect.verticalNormalizedPosition = 0f;
+        if (chatHistory != null) chatHistory.text = "";
+        if (inputField != null) inputField.text = "";
+        if (scrollRect != null) scrollRect.verticalNormalizedPosition = 0f;
 
         ResetCheckButton();
+
+        // safety
+        if (triageGroups == null || triageGroups.Count == 0)
+        {
+            currentTriage = TriageType.Green;
+            currentCasePrompt = "";
+            currentFullPrompt = basePrompt ?? "";
+
+            if (patientCardUI != null)
+                patientCardUI.UpdatePatientFromPrompt(currentCasePrompt);
+
+            return;
+        }
 
         // Pick random triage group
         int groupIndex = Random.Range(0, triageGroups.Count);
         TriagePromptGroup group = triageGroups[groupIndex];
-
         currentTriage = group.triageType;
 
-        // Pick random prompt
-        if (group.prompts.Count > 0)
+        // Pick random case prompt (without basePrompt)
+        if (group.prompts != null && group.prompts.Count > 0)
         {
             int promptIndex = Random.Range(0, group.prompts.Count);
-            currentFullPrompt = basePrompt + "\n" + group.prompts[promptIndex];
+            currentCasePrompt = group.prompts[promptIndex] ?? "";
         }
         else
         {
-            currentFullPrompt = basePrompt;
+            currentCasePrompt = "";
         }
 
-        
+        // Build full prompt for GPT
+        if (!string.IsNullOrEmpty(basePrompt))
+            currentFullPrompt = basePrompt + "\n" + currentCasePrompt;
+        else
+            currentFullPrompt = currentCasePrompt;
+
+        // ✅ Update Patient UI ONLY with the case prompt
+        if (patientCardUI != null)
+            patientCardUI.UpdatePatientFromPrompt(currentCasePrompt);
+        else
+            Debug.LogWarning("ChatManager: patientCardUI reference is missing.");
     }
 
     private void ResetCheckButton()
     {
-        // Reset text back to default
+        if (checkAnswerButton == null) return;
+
         TMP_Text label = checkAnswerButton.GetComponentInChildren<TMP_Text>();
-        if (label != null)
-            label.text = "Check yourself";
+        if (label != null) label.text = "Check yourself";
 
         checkAnswerButton.interactable = true;
     }
+
     // -----------------------------------------------------
     // CHAT SENDING
     // -----------------------------------------------------
     private async void SendUserMessage()
     {
+        if (inputField == null || chatHistory == null) return;
+
         string msg = inputField.text.Trim();
         if (string.IsNullOrEmpty(msg)) return;
-
         AppendMessage("You: " + msg);
         inputField.text = "";
 
@@ -119,12 +148,16 @@ public class ChatManager : MonoBehaviour
 
     private void AppendMessage(string msg)
     {
+        if (chatHistory == null) return;
+
         chatHistory.text += msg + "\n\n";
         ScrollToBottom();
     }
 
     private void ScrollToBottom()
     {
+        if (scrollRect == null) return;
+
         Canvas.ForceUpdateCanvases();
         scrollRect.verticalNormalizedPosition = 0f;
     }
@@ -158,7 +191,8 @@ public class ChatManager : MonoBehaviour
             var responseString = await response.Content.ReadAsStringAsync();
             var data = JObject.Parse(responseString);
 
-            return data["choices"][0]["message"]["content"].ToString().Trim();
+            return data["choices"]?[0]?["message"]?["content"]?.ToString().Trim()
+                   ?? "Error: Empty response.";
         }
         catch
         {
@@ -171,12 +205,12 @@ public class ChatManager : MonoBehaviour
     // -----------------------------------------------------
     private void OnCheckAnswer()
     {
-        // Update button text
+        if (checkAnswerButton == null) return;
+
         TMP_Text label = checkAnswerButton.GetComponentInChildren<TMP_Text>();
         if (label != null)
             label.text = currentTriage.ToString();
 
-        // Change button color based on triage
         Color c = Color.white;
 
         switch (currentTriage)
