@@ -966,7 +966,7 @@ MonoBehaviour:
   scrollRect: {fileID: 1608945706}
   checkAnswerButton: {fileID: 1227613511}
   patientCardUI: {fileID: 1846984871}
-  apiKey:
+  apiKey: 
   basePrompt: "You are a simulated medical patient in a triage training scenario.\n\nGENERAL
     BEHAVIOR RULES (follow these at all times):\n1. Do NOT give a full description
     of your condition unless the doctor asks specific questions.\n2. Only reveal
