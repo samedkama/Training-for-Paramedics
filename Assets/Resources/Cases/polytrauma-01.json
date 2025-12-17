@@ -17,8 +17,8 @@
   "guard": "state.conscious == true",
   "text": "Assess mental status: Does the patient appear oriented ?",
   "options": [
-    { "key": "yes", "label": "Patient appears oriented", "effects": { "oriented": true }, "next": "a_check_vitals" },
-    { "key": "no",  "label": "Patient appears disoriented", "effects": { "oriented": false }, "next": "a_check_vitals" }
+    { "key": "yes", "label": "Patient appears oriented", "effects": { "oriented": true }, "next": "q_age" },
+    { "key": "no",  "label": "Patient appears disoriented", "effects": { "oriented": false }, "next": "q_age" }
   ]
 },
 "q_age": {
@@ -26,9 +26,9 @@
       "guard": "state.conscious == true",
       "text": "What is the patient’s age?",
       "options": [
-        { "key": "child", "label": "< 12", "effects": { "ageGroup": "child" }, "next": "a_check_vitals" },
-        { "key": "adult", "label": "≥ 12", "effects": { "ageGroup": "adult" }, "next": "a_check_vitals" },
-		{ "key": "adult", "label": "< 12", "effects": { "ageGroup": "adult" }, "next": "a_check_vitals" }
+        { "key": "child", "label": "age < 12", "effects": { "ageGroup": "child" }, "next": "a_check_vitals" },
+        { "key": "adult", "label": "12 ≤ age < 65", "effects": { "ageGroup": "adult" }, "next": "a_check_vitals" },
+		{ "key": "senior", "label": "age ≥ 65", "effects": { "ageGroup": "adult" }, "next": "a_check_vitals" }
       ]
     },
 "a_check_vitals": {
@@ -55,7 +55,7 @@
     },
     {
       "key": "critical",
-      "label": "critical",
+      "label": "Critically abnormal (tachycardia/bradycardia with concern for shock or instability)",
       "effects": { 
         "hrStatus": "critical",
         "vitalsCritical": true          
