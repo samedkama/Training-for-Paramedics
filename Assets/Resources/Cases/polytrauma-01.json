@@ -307,7 +307,7 @@
         "symptomSeverity": "mild",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "uncertain",
@@ -317,7 +317,7 @@
         "symptomSeverity": "moderate",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "red_flag",
@@ -327,7 +327,7 @@
         "symptomSeverity": "severe",
         "symptomRedFlag": true
       },
-      "next": "end_info"
+      "next": "triage_select"
     }
   ]
 },
@@ -379,7 +379,7 @@
         "symptomSeverity": "mild",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "moderate",
@@ -389,7 +389,7 @@
         "symptomSeverity": "moderate",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "severe",
@@ -399,7 +399,7 @@
         "symptomSeverity": "severe",
         "symptomRedFlag": true
       },
-      "next": "end_info"
+      "next": "triage_select"
     }
   ]
 },
@@ -415,7 +415,7 @@
         "symptomSeverity": "mild",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "concerning",
@@ -425,7 +425,7 @@
         "symptomSeverity": "moderate",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "red_flag",
@@ -435,7 +435,7 @@
         "symptomSeverity": "severe",
         "symptomRedFlag": true
       },
-      "next": "end_info"
+      "next": "triage_select"
     }
   ]
 },
@@ -451,7 +451,7 @@
         "symptomSeverity": "mild",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "uncertain",
@@ -461,7 +461,7 @@
         "symptomSeverity": "moderate",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "red_flag",
@@ -471,7 +471,7 @@
         "symptomSeverity": "severe",
         "symptomRedFlag": true
       },
-      "next": "end_info"
+      "next": "triage_select"
     }
   ]
 },
@@ -487,7 +487,7 @@
         "symptomSeverity": "mild",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "moderate",
@@ -497,7 +497,7 @@
         "symptomSeverity": "moderate",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "red_flag",
@@ -507,7 +507,7 @@
         "symptomSeverity": "severe",
         "symptomRedFlag": true
       },
-      "next": "end_info"
+      "next": "triage_select"
     }
   ]
 },
@@ -523,7 +523,7 @@
         "symptomSeverity": "mild",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "moderate",
@@ -533,7 +533,7 @@
         "symptomSeverity": "moderate",
         "symptomRedFlag": false
       },
-      "next": "end_info"
+      "next": "triage_select"
     },
     {
       "key": "severe",
@@ -543,7 +543,7 @@
         "symptomSeverity": "severe",
         "symptomRedFlag": true
       },
-      "next": "end_info"
+      "next": "triage_select"
     }
   ]
 },
@@ -573,6 +573,20 @@
   ]
 }
 ,
-    "end_info": { "type": "end", "text": "Case flow ends (triage now)." }
-  }
+"triage_select": {
+  "type": "question",
+  "text": "Select triage category:",
+  "options": [
+    { "key": "Green",  "label": "Green",  "effects": { "triageUser": "Green" },  "next": "end_info" },
+    { "key": "Yellow", "label": "Yellow", "effects": { "triageUser": "Yellow" }, "next": "end_info" },
+    { "key": "Red",    "label": "Red",    "effects": { "triageUser": "Red" },    "next": "end_info" }
+  ]
+},
+"end_info": {
+  "type": "end",
+  "text": "Case flow ends (triage now)."
+}
+
+
+}
 }

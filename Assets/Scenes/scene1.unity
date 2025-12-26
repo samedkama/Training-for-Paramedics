@@ -398,7 +398,7 @@ RectTransform:
   m_GameObject: {fileID: 111972257}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0579778, y: 1.0579778, z: 1.0579778}
+  m_LocalScale: {x: 0.32430565, y: 0.32430565, z: 0.32430565}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 628113198}
@@ -406,12 +406,12 @@ RectTransform:
   - {fileID: 1461263005}
   - {fileID: 234088719}
   - {fileID: 1477535145}
-  m_Father: {fileID: 969322008}
+  m_Father: {fileID: 1419293690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.5664062, y: -1.0305176}
-  m_SizeDelta: {x: 0, y: -11.899902}
+  m_AnchoredPosition: {x: 2.3193703, y: -0.31587613}
+  m_SizeDelta: {x: 1611.4, y: 1096.0001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &122232343
 GameObject:
@@ -440,15 +440,15 @@ RectTransform:
   m_GameObject: {fileID: 122232343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0579778, y: 1.0579778, z: 1.0579778}
+  m_LocalScale: {x: 0.32430565, y: 0.32430565, z: 0.32430565}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1730910730}
-  m_Father: {fileID: 969322008}
+  m_Father: {fileID: 1419293690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 431.6206, y: 423.03}
+  m_AnchoredPosition: {x: 132.30624, y: 129.67291}
   m_SizeDelta: {x: 741.1437, y: 353.58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &122232345
@@ -694,14 +694,14 @@ RectTransform:
   m_GameObject: {fileID: 241448467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0579779, y: 1.0579779, z: 1.0579779}
+  m_LocalScale: {x: 0.32430568, y: 0.32430568, z: 0.32430568}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 969322008}
+  m_Father: {fileID: 1419293690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1106.8657, y: -521.80695}
+  m_AnchoredPosition: {x: 126.99078, y: -24.820435}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241448469
@@ -802,6 +802,132 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241448467}
+  m_CullTransparentMesh: 1
+--- !u!1 &363842864
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 363842865}
+  - component: {fileID: 363842868}
+  - component: {fileID: 363842867}
+  - component: {fileID: 363842866}
+  m_Layer: 5
+  m_Name: Scrollbar Vertical
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &363842865
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363842864}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1444833766}
+  m_Father: {fileID: 1934092737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: -16.900024}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &363842866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363842864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Scrollbar
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 469422238}
+  m_HandleRect: {fileID: 469422237}
+  m_Direction: 2
+  m_Value: 0
+  m_Size: 1
+  m_NumberOfSteps: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &363842867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363842864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &363842868
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363842864}
   m_CullTransparentMesh: 1
 --- !u!1 &378438884
 GameObject:
@@ -930,6 +1056,96 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &418013600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418013601}
+  - component: {fileID: 418013604}
+  - component: {fileID: 418013603}
+  - component: {fileID: 418013602}
+  m_Layer: 5
+  m_Name: Viewport
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &418013601
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418013600}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1025402536}
+  m_Father: {fileID: 1934092737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 3, y: -16.900024}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &418013602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418013600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
+  m_ShowMaskGraphic: 0
+--- !u!114 &418013603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418013600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &418013604
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418013600}
+  m_CullTransparentMesh: 1
 --- !u!1 &467797727
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,181 +1199,24 @@ MonoBehaviour:
     speaks."
   triageGroups:
   - triageType: 0
-    prompts:
-    - "Name: Alex Meyer \nAge: 24 \nSex: Male\nTemperature: 36.7 \xB0C \nOxygen saturation:
-      98 % (room air) \nBlood pressure: 122/78 mmHg \nHeart rate: 78/min, regular
-      \n\nAdditional information: \n\nSlipped on wet ground and fell onto the right
-      knee \n\nAble to walk independently \n\nMild right knee pain (3/10) \n\nSlight
-      swelling around the right knee, no visible deformity \n\nNo bleeding, no open
-      wounds \n\nFull range of motion, bending the knee is uncomfortable \n\nRespiratory
-      rate 14/min, unlabored \n\nNo dizziness, nausea, or vision problems \n\nNo
-      head impact, no loss of consciousness \n\nPatient is alert, oriented, speaking
-      clearly and calmly \n\nSlightly worried about the knee but not in distress
-      \n\nPatient should be spoken to as they would speak themselves "
-    - "Name: Lukas Schneider \nAge: 19 \nSex: Male\nTemperature: 36.6 \xB0C \nOxygen
-      saturation: 98 % (room air) \nBlood pressure: 118/76 mmHg \nHeart rate: 72
-      bpm, regular \n\nAdditional information: \n\nTwisted left ankle while jogging
-      on a forest path \n\nAble to walk independently with a slight limp \n\nMild
-      ankle pain (2/10) \n\nMild swelling at lateral ankle, no deformity \n\nNo bleeding
-      or open wounds \n\nFull foot movement; inversion causes discomfort \n\nRespiratory
-      rate 16/min, unlabored \n\nNo dizziness, nausea, or visual disturbances \n\nNo
-      head impact, no loss of consciousness \n\nCapillary refill < 2 seconds \n\nAlert,
-      oriented, calm, slightly annoyed by pain "
-    - "Name: Martin Weber \nAge: 34 \nSex: Male\nTemperature: 36.8 \xB0C \nOxygen
-      saturation: 97 % (room air) \nBlood pressure: 124/80 mmHg \nHeart rate: 78
-      bpm, regular \n\nAdditional information: \n\nSuperficial 1 cm cut on right
-      palm from broken plastic \n\nMinimal bleeding, controlled \n\nPain rated 2/10
-      \n\nFull movement of fingers and hand \n\nRespiratory rate 15/min, unlabored
-      \n\nNo dizziness or nausea \n\nNo head injury, no loss of consciousness \n\nCapillary
-      refill < 2 seconds \n\nAlert, oriented, cooperative \n\nSlightly embarrassed
-      about the minor injury "
-    - "Name: Emil Fischer \nAge: 7 \nSex: Male\nTemperature: 36.9 \xB0C \nOxygen
-      saturation: 98 % (room air) \nBlood pressure: 102/65 mmHg \nHeart rate: 96
-      bpm, regular for age \n\nAdditional information: \n\nBumped elbow while playing
-      on playground \n\nWalking without difficulty \n\nMild elbow pain (3/10) when
-      bending \n\nSmall bruise forming, no deformity \n\nNo open wounds \n\nFull
-      range of motion \n\nRespiratory rate 22/min, unlabored (age-appropriate) \n\nNo
-      dizziness or vomiting \n\nNo head impact \n\nAlert, oriented for age \n\nInitially
-      tearful, now calm \n\n "
+    scenarios:
+    - scenarioId: alex-meyer
+      casePrompt: "Name: Alex Meyer\r\nAge: 24\r\nSex: Male\nTemperature: 36.7 \xB0C\nOxygen
+        saturation: 98 % (room air) \nBlood pressure: 122/78 mmHg \nHeart rate: 78/min,
+        regular \n\nAdditional information: Slipped on wet ground and fell onto the
+        right knee Able to walk independently Mild right knee pain (3/10) Slight
+        swelling around the right knee, no visible deformity No bleeding, no open
+        wounds Full range of motion, bending the knee is uncomfortable Respiratory
+        rate 14/min, unlabored No dizziness, nausea, or vision problems No head impact,
+        no loss of consciousness Patient is alert, oriented, speaking clearly and
+        calmly Slightly worried about the knee but not in distress Patient should
+        be spoken to as they would speak themselves"
   - triageType: 1
-    prompts:
-    - "Name: Markus Klein \nSex: Male\nAge: 42 \nTemperature: 36.8 \xB0C \nOxygen
-      saturation: 93% (room air) \nBlood pressure: 94/62 mmHg \nHeart rate: 104/min,
-      regular \n\n \n\nAdditional information: \n\n\t\u2022\tHit on wet warehouse
-      floor by a fallen metal shelf onto the left lower leg \n\n\t\u2022\tAble to
-      stand with support, walking is painful and difficult \n\n\t\u2022\tConstant
-      throbbing pain in the left lower leg (6/10) \n\n\t\u2022\tSwelling and bruising
-      over the shin, no major bleeding, only a small superficial scrape \n\n\t\u2022\tRespiratory
-      rate 22/min, slightly increased, unlabored \n\n\t\u2022\tNo chest pain, no
-      severe shortness of breath \n\n\t\u2022\tNo head impact, no loss of consciousness
-      \n\n\t\u2022\tPatient is alert, oriented, speaking clearly, anxious about a
-      possible fracture \n\n\t\u2022\tStrong pain reaction when the lower leg is
-      palpated or weight is put on it \n\n\t\u2022\tPatient should be spoken to as
-      they would speak themselves"
-    - "Name: Laura Becker \nSex: Female\nAge: 35 \nTemperature: 36.7 \xB0C \nOxygen
-      saturation: 94% (room air) \nBlood pressure: 92/60 mmHg \nHeart rate: 102/min,
-      regular \n\nAdditional information: \n\n\t\u2022\tTwisted right ankle while
-      stepping off a curb \n\n\t\u2022\tAble to stand with support, walks with a
-      pronounced limp \n\n\t\u2022\tModerate lateral ankle pain (5/10) \n\n\t\u2022\tModerate
-      swelling around the lateral malleolus, no deformity, no active bleeding \n\n\t\u2022\tRespiratory
-      rate 21/min, slightly increased, unlabored \n\n\t\u2022\tNo dizziness, chest
-      pain, or relevant shortness of breath \n\n\t\u2022\tPatient is alert, oriented,
-      worried about a sprain or ligament tear \n\n\t\u2022\tSpeaks clearly, shows
-      pain when the ankle is moved or palpated \n\n\t\u2022\tPatient should be spoken
-      to as they would speak themselves"
-    - "Name: Thomas M\xFCller \nSex: Male\nAge: 50 \nTemperature: 36.9 \xB0C \nOxygen
-      saturation: 93% (room air) \nBlood pressure: 96/64 mmHg \nHeart rate: 108/min,
-      regular \n\nAdditional information: \n\n\t\u2022\tSlipped on stairs and fell
-      onto an outstretched right hand \n\n\t\u2022\tStrong, sharp pain in the right
-      forearm (7/10) \n\n\t\u2022\tVisible swelling and slight deformity in the mid\u2011forearm,
-      skin intact, no external bleeding \n\n\t\u2022\tFingers warm, normal color,
-      slight finger movement possible \n\n\t\u2022\tRespiratory rate 23/min, slightly
-      increased, shallow due to pain \n\n\t\u2022\tNo head impact, no loss of consciousness
-      \n\n\t\u2022\tPatient is alert, oriented, very anxious, repeatedly asks if
-      the arm is broken \n\n\t\u2022\tSpeaks clearly with a tense voice, reacts with
-      marked pain when the forearm is touched or moved \n\n\t\u2022\tPatient should
-      be spoken to as they would speak themselves "
-    - "Name: Sabine Fischer \nSex: Female\nAge: 40 \nTemperature: 37.0 \xB0C \nOxygen
-      saturation: 92% (room air) \nBlood pressure: 98/66 mmHg \nHeart rate: 112/min,
-      regular \n\nAdditional information: \n\n\t\u2022\tHit on the right side of
-      the chest by a falling wooden beam at a construction site \n\n\t\u2022\tLocalized
-      right\u2011sided chest pain (6/10), worse with deep breathing, coughing, or
-      movement \n\n\t\u2022\tNo obvious chest deformity, no open wounds \n\n\t\u2022\tRespiratory
-      rate 24/min, slightly rapid and shallow due to pain \n\n\t\u2022\tNo dizziness
-      or syncope \n\n\t\u2022\tPatient is alert, tense, careful with movements, worried
-      about a \u201Ccracked rib\u201D \n\n\t\u2022\tSpeaks in short complete sentences,
-      avoids deep breaths because of pain \n\n\t\u2022\tPatient should be spoken
-      to as they would speak themselves "
+    scenarios: []
   - triageType: 2
-    prompts:
-    - "Name: Paul Schulz \nSex: Male\nAge: 45 \nTemperature: 36.6 \xB0C \nOxygen
-      saturation: 92 % (room air) \nBlood pressure: 102/68 mmHg \nHeart rate: 116/min,
-      regular but fast \n\nAdditional information: \n\nInvolved in a motorcycle crash
-      and struck the left thigh against a guardrail \n\nSevere pain in the left upper
-      leg rated 8/10 \n\nSignificant swelling and firmness in the mid-thigh region,
-      only mild surface bruising \n\nLeft leg appears paler than the right and feels
-      noticeably colder to the touch \n\nPatient reports feeling increasingly dizzy
-      and weak \n\nRespiratory rate 24/min, slightly labored \n\nCan answer questions
-      but appears restless \n\nBehavior: \n\nAnxious and repeatedly says they feel
-      \u201Cfaint\u201D and that the leg feels \u201Ccold inside\u201D \n\nSpeaks
-      in full but slightly strained sentences \n\nReacts strongly when the thigh
-      is palpated \n\nPatient should be spoken to as they would speak themselves. "
-    - "Name: Nina Richter\nSex: Female \nAge: 30 \nTemperature: 36.9 \xB0C \nOxygen
-      saturation: 88 % (room air) \nBlood pressure: 126/76 mmHg \nHeart rate: 120/min,
-      regular \n\nAdditional information: \n\nHistory of asthma \n\nSudden shortness
-      of breath after exposure to dust in a warehouse \n\nSevere shortness of breath,
-      chest tightness rated 8/10 \n\nAudible wheezing, especially during expiration
-      \n\nRespiratory rate 30/min, clearly increased with use of accessory muscles
-      \n\nNo trauma, no external bleeding \n\nBehavior: \n\nPatient is clearly distressed
-      and frightened \n\nSpeaks only in short phrases, interrupted by gasps for air
-      \n\nLeans forward and braces arms to ease breathing \n\nPatient should be spoken
-      to as they would speak themselves. \n\n "
-    - "Name: Clara Wagner\nSex: Female \nAge: 78 \nTemperature: 36.5 \xB0C \n\n Oxygen
-      saturation: 93 % (room air) \nBlood pressure: 110/70 mmHg \nHeart rate: 112/min,
-      irregular \n\nAdditional information: \n\nFound sitting on the floor at home
-      after an unwitnessed fall \n\nResponds slowly and seems confused about time
-      and place \n\nSmall bruise on the forehead, no active external bleeding \n\nRespiratory
-      rate 22/min, somewhat shallow \n\nMoves all limbs but appears weak \n\nBehavior:
-      \n\nAnswers questions with delays and sometimes inappropriate words \n\nCannot
-      reliably follow all commands \n\nAppears scared and disoriented \n\nPatient
-      should be spoken to as they would speak themselves. "
-    - "Name: Felix Hoffmann \nSex: Male\nAge: 52 \nTemperature: 36.8 \xB0C \nOxygen
-      saturation: 89 % (room air) \nBlood pressure: 104/70 mmHg \nHeart rate: 122/min,
-      regular \n\nAdditional information: \n\nBriefly crushed between a truck and
-      a loading ramp \n\nIntense chest pain on the left side rated 8/10, worse with
-      breathing \n\nLeft side of the chest moves less than the right during inspiration
-      \n\nRespiratory rate 28/min, rapid and shallow \n\nFeels very short of breath
-      and light-headed \n\nBehavior: \n\nPatient is anxious and speaks in very short
-      sentences \n\nKeeps one hand on the painful side of the chest \n\nAppears to
-      be fighting for air \n\nPatient should be spoken to as they would speak themselves. "
+    scenarios: []
   - triageType: 3
-    prompts:
-    - "Name: Karl Schneider \nSex: Male\nAge: 67 \nTemperature: Not measurable \nOxygen
-      saturation: Not measurable \nBlood pressure: Not measurable \nHeart rate: 0/min
-      \n\nAdditional information: \n\n\t\u2022\tFound collapsed on the floor of a
-      supermarket after a witnessed sudden collapse \n\n\t\u2022\tNo spontaneous
-      breathing, no visible chest movement \n\n\t\u2022\tNo carotid or radial pulse
-      detectable \n\n\t\u2022\tSkin pale and cold, lips and fingertips bluish \n\n\t\u2022\tPupils
-      fixed and widely dilated, no reaction to light \n\n\t\u2022\tEstimated downtime
-      >15 minutes without resuscitation \n\n\t\u2022\tno eye opening, no verbal or
-      motor response \n\n\t\u2022\tNo response to verbal commands or painful stimuli
-      \n\n\t\u2022\tBody remains completely motionless \n\n\t\u2022\tPatient should
-      be spoken to as they would speak themselves (no response expected) "
-    - "Name: Julia Wagner \nSex: female\nAge: 34 \nTemperature: Not measurable \nOxygen
-      saturation: Not measurable \nBlood pressure: Systolic estimated <60 mmHg, then
-      not measurable \nHeart rate: Initially agonal, then 0/min \n\nAdditional information:
-      \n\n\t\u2022\tStruck by a high\u2011speed vehicle as a pedestrian, found at
-      roadside \n\n\t\u2022\tLarge open head injury with visible brain tissue and
-      massive contamination \n\n\t\u2022\tAgonal gasps at 4\u20135 breaths/min with
-      long pauses, ineffective breathing \n\n\t\u2022\tVery weak carotid pulse at
-      first, no radial pulse; quickly becomes pulseless \n\n\t\u2022\tPupils unequal
-      and non\u2011reactive to light \n\n\t\u2022\tno eye opening, no verbal or motor
-      response \n\n\t\u2022\tNo purposeful movement, only brief terminal gasping
-      \n\n\t\u2022\tInjuries assessed as unsurvivable in mass\u2011casualty setting
-      \n\n\t\u2022\tPatient should be spoken to as they would speak themselves (no
-      response expected) \n\n "
-    - "Name: Ahmed Yilmaz \nSex: Male\nAge: 52 \nTemperature: Cold to touch \nOxygen
-      saturation: Not measurable \nBlood pressure: Not measurable \nHeart rate: 0/min
-      \n\nAdditional information: \n\n\t\u2022\tFound under debris after a warehouse
-      collapse, extrication after prolonged time \n\n\t\u2022\tExtensive crush injuries
-      to chest and abdomen with severe deformity \n\n\t\u2022\tNo spontaneous breathing,
-      no chest rise \n\n\t\u2022\tNo carotid or femoral pulse \n\n\t\u2022\tSkin
-      grey, waxy, with visible lividity on dependent body parts \n\n\t\u2022\tPupils
-      fixed and mid\u2011dilated \n\n\t\u2022\t no eye, verbal, or motor response
-      \n\n\t\u2022\tNo reaction to voice, touch, or deep painful stimuli \n\n\t\u2022\tCompletely
-      flaccid muscle tone \n\n\t\u2022\tPatient should be spoken to as they would
-      speak themselves (no response expected) "
-    - "Name: Elisabeth Kr\xFCger \nSex: Female\nAge: 84 \nTemperature: Cold peripherally
-      \nOxygen saturation: Not measurable \nBlood pressure: Not measurable \nHeart
-      rate: 0/min \n\nAdditional information: \n\n\t\u2022\tKnown advanced metastatic
-      cancer, found unresponsive in nursing\u2011home bed \n\n\t\u2022\tValid do\u2011not\u2011resuscitate
-      order present with documentation \n\n\t\u2022\tNo spontaneous breathing or
-      chest movement \n\n\t\u2022\tNo carotid pulse, lips and nail beds cyanotic
-      \n\n\t\u2022\tPupils fixed, non\u2011reactive, absent corneal reflex \n\n\t\u2022\tno
-      eye opening, no verbal or motor response \n\n\t\u2022\tNo reaction to verbal
-      commands or painful stimuli \n\n\t\u2022\tIn this context categorized as expectant,
-      no resuscitation started \n\n\t\u2022\tPatient should be spoken to as they
-      would speak themselves (no response expected) \n\n "
+    scenarios: []
 --- !u!4 &467797729
 Transform:
   m_ObjectHideFlags: 0
@@ -1173,6 +1232,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 27010730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &469422236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 469422237}
+  - component: {fileID: 469422239}
+  - component: {fileID: 469422238}
+  m_Layer: 5
+  m_Name: Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &469422237
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469422236}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1444833766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &469422238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469422236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &469422239
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469422236}
+  m_CullTransparentMesh: 1
 --- !u!1 &471872445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1538,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 969322008}
+  - {fileID: 1419293690}
   m_Father: {fileID: 27010730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1488,6 +1623,160 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505695962}
   m_CullTransparentMesh: 1
+--- !u!1 &592427868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592427869}
+  - component: {fileID: 592427871}
+  - component: {fileID: 592427870}
+  m_Layer: 5
+  m_Name: ResultPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &592427869
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592427868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 614913218}
+  - {fileID: 1934092737}
+  - {fileID: 1549215257}
+  m_Father: {fileID: 969322008}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &592427870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592427868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.9647059}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &592427871
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592427868}
+  m_CullTransparentMesh: 1
+--- !u!1 &614913217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614913218}
+  - component: {fileID: 614913219}
+  - component: {fileID: 614913220}
+  m_Layer: 5
+  m_Name: Header
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &614913218
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614913217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1791208545}
+  m_Father: {fileID: 592427869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 140}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!222 &614913219
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614913217}
+  m_CullTransparentMesh: 1
+--- !u!114 &614913220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614913217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &628113197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,9 +1965,17 @@ MonoBehaviour:
   optionsParent: {fileID: 794344924}
   optionButtonPrefab: {fileID: 887427340351256349, guid: 9ca636cb19551f34b8ab990151c74301, type: 3}
   triageText: {fileID: 241448469}
+  chatManager: {fileID: 467797728}
   vitalsPanel: {fileID: 111972257}
   respRateInput: {fileID: 1461263004}
   painScaleInput: {fileID: 234088718}
+  scenarioId: 
+  resultPanel: {fileID: 592427868}
+  resultHeaderImage: {fileID: 614913220}
+  resultTitleText: {fileID: 1791208547}
+  resultBodyText: {fileID: 1890395681}
+  resultCloseButton: {fileID: 1549215254}
+  dialogueRoot: {fileID: 1419293689}
 --- !u!1 &794344923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,14 +2002,14 @@ RectTransform:
   m_GameObject: {fileID: 794344923}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0579779, y: 1.0579779, z: 1.0579779}
+  m_LocalScale: {x: 0.32430568, y: 0.32430568, z: 0.32430568}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 969322008}
+  m_Father: {fileID: 1419293690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 451.51004, y: 228.66}
+  m_AnchoredPosition: {x: 138.40295, y: 70.09198}
   m_SizeDelta: {x: 567.77, y: -324.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794344925
@@ -2364,12 +2661,9 @@ RectTransform:
   - {fileID: 1227613510}
   - {fileID: 505695963}
   - {fileID: 944786918}
-  - {fileID: 111972260}
   - {fileID: 674391108}
-  - {fileID: 122232344}
-  - {fileID: 794344924}
-  - {fileID: 241448468}
   - {fileID: 1618876196}
+  - {fileID: 592427869}
   m_Father: {fileID: 494910462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2729,6 +3023,84 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1025402535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1025402536}
+  - component: {fileID: 1025402538}
+  - component: {fileID: 1025402537}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1025402536
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025402535}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1890395679}
+  m_Father: {fileID: 418013601}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.0004272461}
+  m_SizeDelta: {x: -80, y: 50}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1025402537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025402535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
+--- !u!114 &1025402538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025402535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 20
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1026481077
 GameObject:
   m_ObjectHideFlags: 0
@@ -3838,6 +4210,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414911685}
   m_CullTransparentMesh: 1
+--- !u!1 &1419293689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419293690}
+  m_Layer: 5
+  m_Name: DialogueRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1419293690
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419293689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 122232344}
+  - {fileID: 794344924}
+  - {fileID: 241448468}
+  - {fileID: 111972260}
+  m_Father: {fileID: 494910462}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1424218586
 GameObject:
   m_ObjectHideFlags: 0
@@ -4045,6 +4456,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440703524}
   m_CullTransparentMesh: 1
+--- !u!1 &1444833765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1444833766}
+  m_Layer: 5
+  m_Name: Sliding Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1444833766
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444833765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 469422237}
+  m_Father: {fileID: 363842865}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: -20}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1461263003
 GameObject:
   m_ObjectHideFlags: 0
@@ -4492,6 +4939,127 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483884860}
   m_CullTransparentMesh: 1
+--- !u!1 &1549215253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549215257}
+  - component: {fileID: 1549215256}
+  - component: {fileID: 1549215255}
+  - component: {fileID: 1549215254}
+  m_Layer: 5
+  m_Name: CloseButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1549215254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549215253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1549215255}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1549215255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549215253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1549215256
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549215253}
+  m_CullTransparentMesh: 1
+--- !u!224 &1549215257
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549215253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1862948501}
+  m_Father: {fileID: 592427869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -100, y: 40}
+  m_SizeDelta: {x: 250, y: 100}
+  m_Pivot: {x: 1, y: 0}
 --- !u!1 &1608945704
 GameObject:
   m_ObjectHideFlags: 0
@@ -4985,6 +5553,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734022382}
   m_CullTransparentMesh: 1
+--- !u!1 &1791208544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1791208545}
+  - component: {fileID: 1791208546}
+  - component: {fileID: 1791208547}
+  m_Layer: 5
+  m_Name: HeaderTitle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1791208545
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791208544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 614913218}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1791208546
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791208544}
+  m_CullTransparentMesh: 1
+--- !u!114 &1791208547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791208544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Result
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 75
+  m_fontSizeBase: 75
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1846984867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,6 +5787,299 @@ MonoBehaviour:
   cardButton: {fileID: 1440703526}
   panelAnimator: {fileID: 0}
   isOpenParam: IsOpen
+--- !u!1 &1862948500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1862948501}
+  - component: {fileID: 1862948503}
+  - component: {fileID: 1862948502}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1862948501
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862948500}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1549215257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1862948502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862948500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Close
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1862948503
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862948500}
+  m_CullTransparentMesh: 1
+--- !u!1 &1890395678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890395679}
+  - component: {fileID: 1890395680}
+  - component: {fileID: 1890395681}
+  - component: {fileID: 1890395682}
+  m_Layer: 5
+  m_Name: ResultBodyText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1890395679
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890395678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1025402536}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1890395680
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890395678}
+  m_CullTransparentMesh: 1
+--- !u!114 &1890395681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890395678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: PLACEHOLDER
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 32
+  m_fontSizeBase: 32
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1890395682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890395678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: 900
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1909245069
 GameObject:
   m_ObjectHideFlags: 0
@@ -5240,6 +6237,114 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
+--- !u!1 &1934092736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934092737}
+  - component: {fileID: 1934092740}
+  - component: {fileID: 1934092739}
+  - component: {fileID: 1934092738}
+  m_Layer: 5
+  m_Name: Body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1934092737
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934092736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 418013601}
+  - {fileID: 363842865}
+  m_Father: {fileID: 592427869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: 0, y: -140}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1934092738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934092736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
+  m_Content: {fileID: 1025402536}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 2
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 1
+  m_Viewport: {fileID: 418013601}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 363842866}
+  m_HorizontalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 2
+  m_HorizontalScrollbarSpacing: -3
+  m_VerticalScrollbarSpacing: -3
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1934092739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934092736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1934092740
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934092736}
+  m_CullTransparentMesh: 1
 --- !u!1 &1935579577
 GameObject:
   m_ObjectHideFlags: 0

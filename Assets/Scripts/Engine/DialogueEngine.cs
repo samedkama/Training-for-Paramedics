@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using VR.Triage.Core;
 using VR.Triage.Models;
+using UnityEngine;
+
 
 
 namespace VR.Triage.Engine
@@ -23,7 +25,7 @@ namespace VR.Triage.Engine
         // Shared state for the dialogue (vital signs, flags, etc.)
         // will be used for triage evaluation
         public Dictionary<string, object> State { get; } = new();
-
+        public Dictionary<string, string> ChosenOptionsByNodeId { get; } = new(); // gets and saves what the user chose for each node
 
 
         public DialogueEngine(IRepository repo, IActionRunner actions)
@@ -51,6 +53,9 @@ namespace VR.Triage.Engine
             {
                 var opt = node.options.Find(o => o.key == optionKeyOrValue);
                 if (opt == null) return false;
+                ChosenOptionsByNodeId[CurrentNodeId] = opt.key;
+               
+
 
                 if (opt.effects != null)
                 {
@@ -81,6 +86,31 @@ namespace VR.Triage.Engine
                 CurrentNodeId = NextVisibleNodeId(node.next);
                 return true;
             }
+            else if (node.type == "end")
+            {
+                // End kann jetzt auch Optionen haben (Triage-Auswahl)
+                if (node.options != null && node.options.Count > 0)
+                {
+                    var opt = node.options.Find(o => o.key == optionKeyOrValue);
+                    if (opt == null) return false;
+
+                    // speichern: welcher key gewählt wurde
+                    ChosenOptionsByNodeId[CurrentNodeId] = opt.key;
+
+                    // effects in state
+                    if (opt.effects != null)
+                    {
+                        foreach (var kv in opt.effects)
+                            State[kv.Key] = kv.Value;
+                    }
+
+                    // bleibt im End-Node (kein next)
+                    return true;
+                }
+
+                return false;
+            }
+
 
             // unbekannter Node-Typ
             return false;

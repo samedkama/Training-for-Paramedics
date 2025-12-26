@@ -1,3 +1,5 @@
+#if false
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -7,8 +9,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
-
-public enum TriageType
+public enum TriageType_BACKUP_beforeScenarioRefactor
 {
     Green,
     Yellow,
@@ -17,22 +18,14 @@ public enum TriageType
 }
 
 [System.Serializable]
-public class ScenarioEntry
-{
-    public string scenarioId;
-
-    [TextArea(3, 10)]
-    public string casePrompt;
-}
-
-[System.Serializable]
-public class TriagePromptGroup
+public class TriagePromptGroup_BACKUP_beforeScenarioRefactor
 {
     public TriageType triageType;
-    public List<ScenarioEntry> scenarios = new List<ScenarioEntry>();
+    [TextArea(3, 10)]
+    public List<string> prompts = new List<string>();
 }
 
-public class ChatManager : MonoBehaviour
+public class ChatManager_BACKUP_beforeScenarioRefactor : MonoBehaviour
 {
     [Header("UI Elements")]
     public TMP_InputField inputField;
@@ -40,10 +33,6 @@ public class ChatManager : MonoBehaviour
     public Button sendButton;
     public Button newChatButton;
     public ScrollRect scrollRect;
-
-    [Header("Scenario")]
-    public string CurrentScenarioId { get; private set; }
-    public System.Action<string> OnScenarioChanged;
 
     [Header("Check Button")]
     public Button checkAnswerButton;
@@ -60,8 +49,6 @@ public class ChatManager : MonoBehaviour
 
     [Header("Triage Prompt Groups")]
     public List<TriagePromptGroup> triageGroups;
-
-
 
     private TriageType currentTriage;
 
@@ -112,23 +99,15 @@ public class ChatManager : MonoBehaviour
         currentTriage = group.triageType;
 
         // Pick random case prompt (without basePrompt)
-        if (group.scenarios != null && group.scenarios.Count > 0)
+        if (group.prompts != null && group.prompts.Count > 0)
         {
-            int idx = Random.Range(0, group.scenarios.Count);
-            var entry = group.scenarios[idx];
-
-            CurrentScenarioId = entry.scenarioId;
-            currentCasePrompt = entry.casePrompt ?? "";
-           
+            int promptIndex = Random.Range(0, group.prompts.Count);
+            currentCasePrompt = group.prompts[promptIndex] ?? "";
         }
         else
         {
-            CurrentScenarioId = "";
             currentCasePrompt = "";
-          
         }
-        OnScenarioChanged?.Invoke(CurrentScenarioId);
-
 
         // Build full prompt for GPT
         if (!string.IsNullOrEmpty(basePrompt))
@@ -247,3 +226,4 @@ public class ChatManager : MonoBehaviour
         checkAnswerButton.image.color = c;
     }
 }
+#endif
