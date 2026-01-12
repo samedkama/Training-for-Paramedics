@@ -97,9 +97,6 @@ public class SimpleUIController : MonoBehaviour
         // Overlay am Anfang verstecken
         if (resultPanel != null)
             resultPanel.SetActive(false);
-        // Close Button verdrahten
-        if (resultCloseButton != null)
-            resultCloseButton.onClick.AddListener(CloseResultOverlay);
 
     }
 
@@ -266,15 +263,17 @@ public class SimpleUIController : MonoBehaviour
     }
     void CloseResultOverlay()
     {
+        Debug.Log("[UI] CloseResultOverlay clicked");
+
         if (resultPanel != null)
             resultPanel.SetActive(false);
 
         if (dialogueRoot != null)
             dialogueRoot.SetActive(true);
 
-        // falls du willst: sofort wieder den letzten Node anzeigen
-        RenderNode();
+        // WICHTIG: NICHT RenderNode(); sonst öffnet sich das Overlay sofort wieder (weil current node == "end")
     }
+
     void ShowResultOverlay()
     {
         if (resultPanel == null || resultHeaderImage == null || resultTitleText == null || resultBodyText == null)
