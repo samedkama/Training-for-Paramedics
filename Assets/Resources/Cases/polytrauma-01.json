@@ -55,7 +55,7 @@
     },
     {
       "key": "critical",
-      "label": "Critically abnormal (tachycardia/bradycardia with concern for shock or instability)",
+      "label": "critical",
       "effects": { 
         "hrStatus": "critical",
         "vitalsCritical": true          
@@ -146,10 +146,17 @@
   ]
 },
 "a_emergency_management": {
-  "type": "end",
+  "type": "question",
   "guard": "state.vitalsCritical == true",
-  "text": "The patient has at least one critically abnormal vital parameter. Do not continue the interview. Focus on life-saving treatment and rapid transport (triage: RED).",
-  "next": "q_next_if_stable"
+  "text": "Based on your inputs, you should not engage in any further dialogue.",
+  "options": [
+    {
+      "key": "continue",
+      "label": "Triage now !",
+      "effects": {},
+      "next": "triage_select"
+    }
+  ]
 },
 "q_next_if_stable": {
   "type": "question",
@@ -266,6 +273,16 @@
       },
       "next": "q_concussion_redflags"
     },
+	{
+  "key": "head_neck",
+  "label": "Head or neck injury",
+  "effects": {
+    "traumaRegion": "head_or_neck",
+    "regionRisk": "high",
+    "neuroRisk": "possible"
+  },
+  "next": "q_concussion_redflags"
+},
     {
       "key": "abdomen",
       "label": "Abdominal injury",
