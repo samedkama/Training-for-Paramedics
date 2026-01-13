@@ -210,7 +210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 467797729}
+  - {fileID: 1831912400}
   - {fileID: 494910462}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1231,6 +1231,32 @@ MonoBehaviour:
         no loss of consciousness Patient is alert, oriented, speaking clearly and
         calmly Slightly worried about the knee but not in distress Patient should
         be spoken to as they would speak themselves"
+    - scenarioId: Lukas-Schneider
+      casePrompt: "Name: Lukas Schneider \nAge: 19 \nTemperature: 36.6 \xB0C \nOxygen
+        saturation: 98 %(room air) \nBlood pressure: 118/76 mmHg \nHeart rate: 72
+        bpm, regular \n\nAdditional information: \n\nTwisted left ankle while jogging
+        on a forest path \n\nAble to walk independently with a slight limp \n\nMild
+        ankle pain (2/10) \n\nMild swelling at lateral ankle, no deformity \n\nNo
+        bleeding or open wounds \n\nFull foot movement; inversion causes discomfort
+        \n\nRespiratory rate 16/min, unlabored \n\nNo dizziness, nausea, or visual
+        disturbances \n\nNo head impact, no loss of consciousness \n\nCapillary refill
+        < 2 seconds \n\nAlert, oriented, calm, slightly annoyed by pain "
+    - scenarioId: 
+      casePrompt: 
+    - scenarioId: 
+      casePrompt: 
+    - scenarioId: 
+      casePrompt: 
+    - scenarioId: 
+      casePrompt: 
+    - scenarioId: 
+      casePrompt: 
+    - scenarioId: 
+      casePrompt: 
+    - scenarioId: 
+      casePrompt: 
+    - scenarioId: 
+      casePrompt: 
   - triageType: 1
     scenarios: []
   - triageType: 2
@@ -1246,11 +1272,11 @@ Transform:
   m_GameObject: {fileID: 467797727}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -312.28668, y: -195.12868, z: 0}
+  m_LocalScale: {x: 0.80798626, y: 0.80798626, z: 0.80798626}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 27010730}
+  m_Father: {fileID: 494910462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469422236
 GameObject:
@@ -1557,6 +1583,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 467797729}
   - {fileID: 969322008}
   - {fileID: 1419293690}
   m_Father: {fileID: 27010730}
@@ -5791,12 +5818,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831912398}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 109.794495, y: 429.29755, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 109.794495, y: 429.29755, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 27010730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1846984867
 GameObject:
@@ -6664,7 +6691,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1145205875}
   m_HandleRect: {fileID: 1145205874}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7033,4 +7060,3 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 27010730}
-  - {fileID: 1831912400}
