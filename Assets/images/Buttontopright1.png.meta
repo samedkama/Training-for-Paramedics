@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 280cbd08a0ab044daa4210d412519d62
+guid: 3236018706420f74b90398631295390c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -952639757799435253
-    second: file_00000000a36071f5a95a79308e9b3b6c (1)_0
+      213: -1326572055488573486
+    second: Buttontopright1_0
+  - first:
+      213: -5528730952622906258
+    second: Buttontopright1_1
+  - first:
+      213: -1264855389223520189
+    second: Buttontopright1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1000
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,10 +78,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,17 +102,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: file_00000000a36071f5a95a79308e9b3b6c (1)_0
+      name: Buttontopright1_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 32
-        width: 968
-        height: 987
+        x: 0
+        y: 28
+        width: 564
+        height: 476
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b045375003b87c2f0800000000000000
-      internalID: -952639757799435253
+      spriteID: 2dfc4a77eb1179de0800000000000000
+      internalID: -1326572055488573486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttontopright1_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 19
+        width: 207
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e646436bd700643b0800000000000000
+      internalID: -5528730952622906258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Buttontopright1_2
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 0
+        width: 265
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 348f71999b4527ee0800000000000000
+      internalID: -1264855389223520189
       vertices: []
       indices: 
       edges: []
@@ -125,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      file_00000000a36071f5a95a79308e9b3b6c (1)_0: -952639757799435253
+      Buttontopright1_0: -1326572055488573486
+      Buttontopright1_1: -5528730952622906258
+      Buttontopright1_2: -1264855389223520189
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

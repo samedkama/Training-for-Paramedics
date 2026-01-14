@@ -148,6 +148,7 @@
 "a_emergency_management": {
   "type": "question",
   "guard": "state.vitalsCritical == true",
+  "next": "q_next_if_stable",
   "text": "Based on your inputs, you should not engage in any further dialogue.",
   "options": [
     {
@@ -160,6 +161,7 @@
 },
 "q_next_if_stable": {
   "type": "question",
+  "guard": "state.vitalsCritical != true",
   "text": "Vital signs are not in a critical range. You may proceed with further assessment.",
   "options": [
     {
@@ -169,7 +171,8 @@
       "next": "q_mechanism"
     }
   ]
-},
+}
+,
 "q_mechanism": {
   "type": "question",
   "text": "What type of event led to the patient's condition?",
