@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "caseId": "polytrauma-01",
+  "scenarioId": "Tom-Helber",
+  "triageExpected": "Red",
+  "answers": {
+    "q_conscious": "yes",
+    "q_orientation": "no",
+    "q_age": "adult",
+    "q_vitals_hr": "critical",
+    "q_vitals_rr": "critical",
+    "q_vitals_spo2": "critical",
+    "q_vitals_bp": "critical",
+    "q_mechanism": "medical",
+    "q_chief_complaint": "neuro_deficit",
+    "q_major_bleeding_or_shock": "no_bleeding",
+    "q_concussion_redflags": "no_red_flags",
+    "triage_select": "Red"
+  }
+}

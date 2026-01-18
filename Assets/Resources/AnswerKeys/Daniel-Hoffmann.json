@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "caseId": "polytrauma-01",
-  "scenarioId": "Lukas-Schneider",
+  "scenarioId": "Daniel-Hoffmann",
   "triageExpected": "Green",
   "answers": {
     "q_conscious": "yes",

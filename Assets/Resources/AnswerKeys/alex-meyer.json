@@ -16,6 +16,6 @@
     "q_major_bleeding_or_shock": "no_bleeding",
     "q_trauma_region_risk": "extremity_minor",
     "q_concussion_redflags": "no_red_flags",
-	"triage_select": "Green"
+    "triage_select": "Green"
   }
 }

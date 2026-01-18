@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "caseId": "polytrauma-01",
-  "scenarioId": "Lukas-Schneider",
+  "scenarioId": "Emil-Fischer",
   "triageExpected": "Green",
   "answers": {
     "q_conscious": "yes",
     "q_orientation": "yes",
-    "q_age": "adult",
+    "q_age": "child",
     "q_vitals_hr": "normal",
     "q_vitals_rr": "normal",
     "q_vitals_spo2": "normal",

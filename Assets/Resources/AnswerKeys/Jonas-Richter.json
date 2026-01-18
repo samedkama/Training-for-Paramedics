@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
   "caseId": "polytrauma-01",
-  "scenarioId": "Lukas-Schneider",
-  "triageExpected": "Green",
+  "scenarioId": "Jonas-Richter",
+  "triageExpected": "Yellow",
   "answers": {
     "q_conscious": "yes",
-    "q_orientation": "yes",
+    "q_orientation": "No",
     "q_age": "adult",
-    "q_vitals_hr": "normal",
-    "q_vitals_rr": "normal",
-    "q_vitals_spo2": "normal",
-    "q_vitals_bp": "normal",
+    "q_vitals_hr": "abnormal",
+    "q_vitals_rr": "abnormal",
+    "q_vitals_spo2": "abnormal",
+    "q_vitals_bp": "abnormal",
     "q_mechanism": "trauma",
     "q_trauma_mechanism_detail": "low_energy",
     "q_major_bleeding_or_shock": "no_bleeding",
     "q_trauma_region_risk": "extremity_minor",
-    "q_concussion_redflags": "no_red_flags",
-    "triage_select": "Green"
+    "q_concussion_redflags": "uncertain",
+    "triage_select": "Yellow"
   }
 }

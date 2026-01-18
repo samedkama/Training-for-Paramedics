@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-
+using System.Text.RegularExpressions; // ADDED: for parsing Age from text
 
 public enum TriageType
 {
@@ -14,6 +14,23 @@ public enum TriageType
     Yellow,
     Red,
     Black
+}
+
+// ===============================
+// ADDED: enums for avatar logic
+// ===============================
+public enum Sex
+{
+    Male,
+    Female
+}
+
+public enum AgeGroup
+{
+    Child,
+    Teen,
+    Adult,
+    Elderly
 }
 
 [System.Serializable]
@@ -51,6 +68,25 @@ public class ChatManager : MonoBehaviour
     [Header("Patient Card UI")]
     public PatientCardUI patientCardUI;
 
+    // =====================================================
+    // ADDED: Patient avatar Image (assigned via Inspector)
+    // =====================================================
+    [Header("Patient Avatar UI")]
+    [SerializeField] private Image patientAvatarImage;
+
+    // =====================================================
+    // ADDED: Avatar sprites (assigned via Inspector)
+    // =====================================================
+    [Header("Patient Avatars (Age + Sex)")]
+    [SerializeField] private Sprite childMale;
+    [SerializeField] private Sprite childFemale;
+    [SerializeField] private Sprite teenMale;
+    [SerializeField] private Sprite teenFemale;
+    [SerializeField] private Sprite adultMale;
+    [SerializeField] private Sprite adultFemale;
+    [SerializeField] private Sprite elderlyMale;
+    [SerializeField] private Sprite elderlyFemale;
+
     [Header("API Settings")]
     public string apiKey;
 
@@ -61,14 +97,12 @@ public class ChatManager : MonoBehaviour
     [Header("Triage Prompt Groups")]
     public List<TriagePromptGroup> triageGroups;
 
-
-
     private TriageType currentTriage;
 
-    // ✅ только кейс (первые строки с пациентом и т.п.)
+    // only the patient case text
     private string currentCasePrompt;
 
-    // ✅ полный промпт для GPT (base + кейс)
+    // full prompt (base + case)
     private string currentFullPrompt;
 
     private static readonly HttpClient client = new HttpClient();
@@ -93,7 +127,6 @@ public class ChatManager : MonoBehaviour
 
         ResetCheckButton();
 
-        // safety
         if (triageGroups == null || triageGroups.Count == 0)
         {
             currentTriage = TriageType.Green;
@@ -106,12 +139,9 @@ public class ChatManager : MonoBehaviour
             return;
         }
 
-        // Pick random triage group
         int groupIndex = Random.Range(0, triageGroups.Count);
         TriagePromptGroup group = triageGroups[groupIndex];
         currentTriage = group.triageType;
-
-        // Pick random case prompt (without basePrompt)
         if (group.scenarios != null && group.scenarios.Count > 0)
         {
             int idx = Random.Range(0, group.scenarios.Count);
@@ -119,28 +149,35 @@ public class ChatManager : MonoBehaviour
 
             CurrentScenarioId = entry.scenarioId;
             currentCasePrompt = entry.casePrompt ?? "";
-           
         }
         else
         {
             CurrentScenarioId = "";
             currentCasePrompt = "";
-          
         }
+
         OnScenarioChanged?.Invoke(CurrentScenarioId);
 
-
-        // Build full prompt for GPT
         if (!string.IsNullOrEmpty(basePrompt))
             currentFullPrompt = basePrompt + "\n" + currentCasePrompt;
         else
             currentFullPrompt = currentCasePrompt;
 
-        // ✅ Update Patient UI ONLY with the case prompt
+        // =====================================================
+        // ADDED: determine avatar from Age + Sex in case prompt
+        // =====================================================
+        int age = ExtractAgeFromPrompt(currentCasePrompt);
+        Sex sex = ExtractSexFromPrompt(currentCasePrompt);
+        Sprite avatar = GetAvatarSprite(age, sex);
+
+        if (patientAvatarImage != null && avatar != null)
+        {
+            patientAvatarImage.sprite = avatar;
+        }
+
+        // existing behavior (unchanged)
         if (patientCardUI != null)
             patientCardUI.UpdatePatientFromPrompt(currentCasePrompt);
-        else
-            Debug.LogWarning("ChatManager: patientCardUI reference is missing.");
     }
 
     private void ResetCheckButton()
@@ -162,6 +199,7 @@ public class ChatManager : MonoBehaviour
 
         string msg = inputField.text.Trim();
         if (string.IsNullOrEmpty(msg)) return;
+
         AppendMessage("You: " + msg);
         inputField.text = "";
 
@@ -229,8 +267,7 @@ public class ChatManager : MonoBehaviour
     private void OnCheckAnswer()
     {
         if (checkAnswerButton == null) return;
-
-        TMP_Text label = checkAnswerButton.GetComponentInChildren<TMP_Text>();
+       TMP_Text label = checkAnswerButton.GetComponentInChildren<TMP_Text>();
         if (label != null)
             label.text = currentTriage.ToString();
 
@@ -246,4 +283,56 @@ public class ChatManager : MonoBehaviour
 
         checkAnswerButton.image.color = c;
     }
-}
+
+    // =====================================================
+    // ADDED: parsing and avatar selection helpers
+    // =====================================================
+
+    // Parses "Age: XX" from the case prompt
+    private int ExtractAgeFromPrompt(string text)
+    {
+        Match match = Regex.Match(text, @"Age:\s*(\d+)");
+        if (match.Success)
+            return int.Parse(match.Groups[1].Value);
+
+        return -1;
+    }
+
+    // Parses "Sex: male / female" from the case prompt
+    private Sex ExtractSexFromPrompt(string text)
+    {
+        if (Regex.IsMatch(text, @"Sex:\s*male", RegexOptions.IgnoreCase)) return Sex.Male;
+        if (Regex.IsMatch(text, @"Sex:\s*female", RegexOptions.IgnoreCase)) return Sex.Female;
+
+        return Sex.Male;
+    }
+
+    // Converts numeric age into age group
+    private AgeGroup GetAgeGroup(int age)
+    {
+        if (age <= 12) return AgeGroup.Child;
+        if (age <= 17) return AgeGroup.Teen;
+        if (age <= 59) return AgeGroup.Adult;
+        return AgeGroup.Elderly;
+    }
+
+    // Returns the correct avatar sprite based on age group and sex
+    private Sprite GetAvatarSprite(int age, Sex sex)
+    {
+        AgeGroup group = GetAgeGroup(age);
+
+        switch (group)
+        {
+            case AgeGroup.Child:
+                return sex == Sex.Male ? childMale : childFemale;
+            case AgeGroup.Teen:
+                return sex == Sex.Male ? teenMale : teenFemale;
+            case AgeGroup.Adult:
+                return sex == Sex.Male ? adultMale : adultFemale;
+            case AgeGroup.Elderly:
+                return sex == Sex.Male ? elderlyMale : elderlyFemale;
+        }
+
+        return null;
+    }
+} 
