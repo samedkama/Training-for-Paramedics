@@ -50,8 +50,8 @@ public class PatientCardUI : MonoBehaviour
             patientData["Name"] = parts[1].Trim();
         }
 
-        // строки 2–7 — параметры
-        for (int i = 1; i < lines.Length && i <= 6; i++)
+        // строки 2–8 — параметры
+        for (int i = 1; i < lines.Length && i <= 7; i++)
         {
             var line = lines[i].Trim();
             if (string.IsNullOrEmpty(line)) continue;
@@ -74,7 +74,8 @@ public class PatientCardUI : MonoBehaviour
             "Temperature",
             "Oxygen saturation",
             "Blood pressure",
-            "Heart rate"
+            "Heart rate",
+            "Respiratory rate"
         };
 
         string result = "";
