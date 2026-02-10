@@ -25,7 +25,7 @@ namespace VR.Triage.Engine
         // Shared state for the dialogue (vital signs, flags, etc.)
         // will be used for triage evaluation
         public Dictionary<string, object> State { get; } = new();
-        public Dictionary<string, string> ChosenOptionsByNodeId { get; } = new(); // gets and saves what the user chose for each node
+        public Dictionary<string, string> ChosenOptionsByNodeId { get; } = new(); // Stores selected option keys per node id.
 
 
         public DialogueEngine(IRepository repo, IActionRunner actions)
@@ -48,7 +48,7 @@ namespace VR.Triage.Engine
         {
             var node = GetCurrentNode();
 
-            // 1) Question → Option verarbeiten, Effects in den State schreiben
+            // 1) Question node: validate option and apply option effects to state.
             if (node.type == "question")
             {
                 var opt = node.options.Find(o => o.key == optionKeyOrValue);
@@ -66,11 +66,11 @@ namespace VR.Triage.Engine
                 CurrentNodeId = NextVisibleNodeId(opt.next);
                 return true;
             }
-            // 2) Action oder Info → einfach zum nächsten Node springen
-            //    (UI kümmert sich um Panels, Sliders etc.)
+            // 2) Action or info node: execute actions (if any) and continue.
+            //    The UI layer handles panels and interactive controls.
             else if (node.type == "action" || node.type == "info")
             {
-                // Nur falls du irgendwann wieder echte Actions brauchst:
+                // Optional action execution path.
                 if (_actions != null && node.actions != null)
                 {
                     foreach (var a in node.actions)
@@ -88,23 +88,23 @@ namespace VR.Triage.Engine
             }
             else if (node.type == "end")
             {
-                // End kann jetzt auch Optionen haben (Triage-Auswahl)
+                // End nodes may also contain options (for example triage selection).
                 if (node.options != null && node.options.Count > 0)
                 {
                     var opt = node.options.Find(o => o.key == optionKeyOrValue);
                     if (opt == null) return false;
 
-                    // speichern: welcher key gewählt wurde
+                    // Record which option key was selected at this node.
                     ChosenOptionsByNodeId[CurrentNodeId] = opt.key;
 
-                    // effects in state
+                    // Apply option effects to state.
                     if (opt.effects != null)
                     {
                         foreach (var kv in opt.effects)
                             State[kv.Key] = kv.Value;
                     }
 
-                    // bleibt im End-Node (kein next)
+                    // Stay on the end node (no next transition).
                     return true;
                 }
 
@@ -112,7 +112,7 @@ namespace VR.Triage.Engine
             }
 
 
-            // unbekannter Node-Typ
+            // Unknown node type.
             return false;
         }
 
@@ -122,7 +122,7 @@ namespace VR.Triage.Engine
         {
             while (true)
             {
-                var n = Case.nodes[candidate]; // get the candidate node = node from the current case from node.next
+                var n = Case.nodes[candidate]; // Candidate node referenced by current "next" pointer.
                 bool ok = VR.Triage.Core.SimpleExpr.EvaluateBool(n.guard, State);
                 if (ok) return candidate;
                 if (!string.IsNullOrEmpty(n.next)) { candidate = n.next; continue; }

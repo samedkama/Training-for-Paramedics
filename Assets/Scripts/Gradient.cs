@@ -3,23 +3,23 @@ using UnityEngine.UI;
 
 public class Gradient : MonoBehaviour
 {
-    public Image background;       // UI Image для градиента
-    public Color colorTop = Color.white;    // цвет при верхней прокрутке
-    public Color colorBottom = Color.blue;  // цвет при нижней прокрутке
-    public ScrollRect scrollRect;  // Scroll View
+    public Image background;       // UI image that receives the dynamic gradient color.
+    public Color colorTop = Color.white;    // Target color when the scroll is at the top.
+    public Color colorBottom = Color.blue;  // Target color when the scroll is at the bottom.
+    public ScrollRect scrollRect;  // Scroll view used to read the current vertical position.
 
-    private float smoothSpeed = 5f; // скорость плавного перехода
+    private float smoothSpeed = 5f; // Controls how quickly the background transitions to the target color.
     private Color targetColor;
 
     void Update()
     {
-        // Получаем текущую позицию скролла (0–1)
+        // Read current vertical scroll position in the [0..1] range.
         float scrollValue = scrollRect.verticalNormalizedPosition;
 
-        // Вычисляем целевой цвет в зависимости от скролла
+        // Interpolate between bottom and top colors based on scroll position.
         targetColor = Color.Lerp(colorBottom, colorTop, scrollValue);
 
-        // Плавно меняем цвет фона
+        // Smoothly blend the background color to avoid abrupt visual jumps.
         background.color = Color.Lerp(background.color, targetColor, Time.deltaTime * smoothSpeed);
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.Text.RegularExpressions; // ADDED: for parsing Age from text
+using System.Text.RegularExpressions;
 
 public enum TriageType
 {
@@ -16,9 +16,7 @@ public enum TriageType
     Black
 }
 
-// ===============================
-// ADDED: enums for avatar logic
-// ===============================
+// Sex and age-group enums are used to map a case to a matching avatar sprite.
 public enum Sex
 {
     Male,
@@ -36,9 +34,11 @@ public enum AgeGroup
 [System.Serializable]
 public class ScenarioEntry
 {
+    // Stable id used by other systems (for example AnswerKey loading).
     public string scenarioId;
 
     [TextArea(3, 10)]
+    // Raw case prompt that will be appended to the base system prompt.
     public string casePrompt;
 }
 
@@ -60,23 +60,17 @@ public class ChatManager : MonoBehaviour
 
     [Header("Scenario")]
     public string CurrentScenarioId { get; private set; }
+    // Fired whenever a new scenario is selected, so dependent UI can reload.
     public System.Action<string> OnScenarioChanged;
-
-    [Header("Check Button")]
-    public Button checkAnswerButton;
 
     [Header("Patient Card UI")]
     public PatientCardUI patientCardUI;
 
-    // =====================================================
-    // ADDED: Patient avatar Image (assigned via Inspector)
-    // =====================================================
+    // Target image where the selected patient avatar sprite is shown.
     [Header("Patient Avatar UI")]
     [SerializeField] private Image patientAvatarImage;
 
-    // =====================================================
-    // ADDED: Avatar sprites (assigned via Inspector)
-    // =====================================================
+    // Avatar variants selected by age group and sex parsed from the prompt.
     [Header("Patient Avatars (Age + Sex)")]
     [SerializeField] private Sprite childMale;
     [SerializeField] private Sprite childFemale;
@@ -97,12 +91,10 @@ public class ChatManager : MonoBehaviour
     [Header("Triage Prompt Groups")]
     public List<TriagePromptGroup> triageGroups;
 
-    private TriageType currentTriage;
-
-    // only the patient case text
+    // Case-only part of the prompt (without the base system prompt).
     private string currentCasePrompt;
 
-    // full prompt (base + case)
+    // Prompt actually sent to the model (base + case).
     private string currentFullPrompt;
 
     private static readonly HttpClient client = new HttpClient();
@@ -111,25 +103,19 @@ public class ChatManager : MonoBehaviour
     {
         if (sendButton != null) sendButton.onClick.AddListener(SendUserMessage);
         if (newChatButton != null) newChatButton.onClick.AddListener(StartNewCase);
-        if (checkAnswerButton != null) checkAnswerButton.onClick.AddListener(OnCheckAnswer);
 
         StartNewCase();
     }
 
-    // -----------------------------------------------------
-    // NEW PATIENT CASE (RANDOM TRIAGE)
-    // -----------------------------------------------------
+    // Starts a new random case, rebuilds the prompt and refreshes patient UI.
     private void StartNewCase()
     {
         if (chatHistory != null) chatHistory.text = "";
         if (inputField != null) inputField.text = "";
         if (scrollRect != null) scrollRect.verticalNormalizedPosition = 0f;
 
-        ResetCheckButton();
-
         if (triageGroups == null || triageGroups.Count == 0)
         {
-            currentTriage = TriageType.Green;
             currentCasePrompt = "";
             currentFullPrompt = basePrompt ?? "";
 
@@ -141,7 +127,6 @@ public class ChatManager : MonoBehaviour
 
         int groupIndex = Random.Range(0, triageGroups.Count);
         TriagePromptGroup group = triageGroups[groupIndex];
-        currentTriage = group.triageType;
         if (group.scenarios != null && group.scenarios.Count > 0)
         {
             int idx = Random.Range(0, group.scenarios.Count);
@@ -163,9 +148,7 @@ public class ChatManager : MonoBehaviour
         else
             currentFullPrompt = currentCasePrompt;
 
-        // =====================================================
-        // ADDED: determine avatar from Age + Sex in case prompt
-        // =====================================================
+        // Determine the avatar from "Age" and "Sex" values inside casePrompt.
         int age = ExtractAgeFromPrompt(currentCasePrompt);
         Sex sex = ExtractSexFromPrompt(currentCasePrompt);
         Sprite avatar = GetAvatarSprite(age, sex);
@@ -175,24 +158,12 @@ public class ChatManager : MonoBehaviour
             patientAvatarImage.sprite = avatar;
         }
 
-        // existing behavior (unchanged)
+        // Update patient card texts (name + vitals block).
         if (patientCardUI != null)
             patientCardUI.UpdatePatientFromPrompt(currentCasePrompt);
     }
-
-    private void ResetCheckButton()
-    {
-        if (checkAnswerButton == null) return;
-
-        TMP_Text label = checkAnswerButton.GetComponentInChildren<TMP_Text>();
-        if (label != null) label.text = "Check yourself";
-
-        checkAnswerButton.interactable = true;
-    }
-
-    // -----------------------------------------------------
-    // CHAT SENDING
-    // -----------------------------------------------------
+    
+    // Sends the user's message and appends the assistant response to chat history.
     private async void SendUserMessage()
     {
         if (inputField == null || chatHistory == null) return;
@@ -207,6 +178,7 @@ public class ChatManager : MonoBehaviour
         AppendMessage("Patient: " + reply);
     }
 
+    // Appends one chat line and keeps the scroll view at the latest message.
     private void AppendMessage(string msg)
     {
         if (chatHistory == null) return;
@@ -223,9 +195,7 @@ public class ChatManager : MonoBehaviour
         scrollRect.verticalNormalizedPosition = 0f;
     }
 
-    // -----------------------------------------------------
-    // OPENAI REQUEST
-    // -----------------------------------------------------
+    // Calls the Chat Completions API using the current scenario prompt.
     private async Task<string> GetChatGPTResponse(string userInput)
     {
         string url = "https://api.openai.com/v1/chat/completions";
@@ -260,35 +230,8 @@ public class ChatManager : MonoBehaviour
             return "Error: Could not get response.";
         }
     }
-
-    // -----------------------------------------------------
-    // CHECK ANSWER BUTTON
-    // -----------------------------------------------------
-    private void OnCheckAnswer()
-    {
-        if (checkAnswerButton == null) return;
-       TMP_Text label = checkAnswerButton.GetComponentInChildren<TMP_Text>();
-        if (label != null)
-            label.text = currentTriage.ToString();
-
-        Color c = Color.white;
-
-        switch (currentTriage)
-        {
-            case TriageType.Green:  c = new Color(0.29f, 0.69f, 0.31f); break;
-            case TriageType.Yellow: c = new Color(1f, 0.92f, 0.23f); break;
-            case TriageType.Red:    c = new Color(0.96f, 0.26f, 0.21f); break;
-            case TriageType.Black:  c = new Color(0.13f, 0.13f, 0.13f); break;
-        }
-
-        checkAnswerButton.image.color = c;
-    }
-
-    // =====================================================
-    // ADDED: parsing and avatar selection helpers
-    // =====================================================
-
-    // Parses "Age: XX" from the case prompt
+    
+    // Parses "Age: XX" from the case prompt text.
     private int ExtractAgeFromPrompt(string text)
     {
         Match match = Regex.Match(text, @"Age:\s*(\d+)");
@@ -298,7 +241,7 @@ public class ChatManager : MonoBehaviour
         return -1;
     }
 
-    // Parses "Sex: male / female" from the case prompt
+    // Parses "Sex: male/female" from the case prompt; defaults to Male.
     private Sex ExtractSexFromPrompt(string text)
     {
         if (Regex.IsMatch(text, @"Sex:\s*male", RegexOptions.IgnoreCase)) return Sex.Male;
@@ -307,7 +250,7 @@ public class ChatManager : MonoBehaviour
         return Sex.Male;
     }
 
-    // Converts numeric age into age group
+    // Converts numeric age into a coarse age group used for avatar selection.
     private AgeGroup GetAgeGroup(int age)
     {
         if (age <= 12) return AgeGroup.Child;
@@ -316,7 +259,7 @@ public class ChatManager : MonoBehaviour
         return AgeGroup.Elderly;
     }
 
-    // Returns the correct avatar sprite based on age group and sex
+    // Returns the best matching avatar sprite for the parsed patient profile.
     private Sprite GetAvatarSprite(int age, Sex sex)
     {
         AgeGroup group = GetAgeGroup(age);

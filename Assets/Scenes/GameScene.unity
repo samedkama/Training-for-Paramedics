@@ -1197,7 +1197,6 @@ MonoBehaviour:
   sendButton: {fileID: 882007124}
   newChatButton: {fileID: 860715983}
   scrollRect: {fileID: 1608945706}
-  checkAnswerButton: {fileID: 0}
   patientCardUI: {fileID: 1274861094}
   patientAvatarImage: {fileID: 1424218588}
   childMale: {fileID: -1077981596813497912, guid: 0d959acab20a1448198f275281d57b99, type: 3}

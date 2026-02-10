@@ -6,8 +6,8 @@ namespace VR.Triage.Engine
 {
     public static class AnswerKeyJudge
     {
-        // key = Soll (AnswerKey JSON)
-        // chosen = Ist (User klicks aus DialogueEngine)
+        // key = expected answers (AnswerKey JSON)
+        // chosen = actual user clicks collected by DialogueEngine
         public static AnswerCheckResult Compare(AnswerKeyDefinition key, Dictionary<string, string> chosen)
         {
             var result = new AnswerCheckResult();
@@ -36,7 +36,7 @@ namespace VR.Triage.Engine
                 return result;
             }
 
-            // Wir prüfen nur das, was im AnswerKey definiert ist
+            // Compare only nodes defined in the AnswerKey.
             foreach (var kv in key.answers)
             {
                 var nodeId = kv.Key;

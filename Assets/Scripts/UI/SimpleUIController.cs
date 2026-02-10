@@ -37,7 +37,7 @@ public class SimpleUIController : MonoBehaviour
 
 
     DialogueEngine _dialogue;
-    // TriageEngine _triage; // not used at the moment
+    // TriageEngine _triage; // Not used at the moment.
 
     async void Start()
     {
@@ -94,7 +94,7 @@ public class SimpleUIController : MonoBehaviour
         if (vitalsPanel != null)
             vitalsPanel.SetActive(false);
         RenderNode();
-        // Overlay am Anfang verstecken
+        // Hide result overlay at startup.
         if (resultPanel != null)
             resultPanel.SetActive(false);
 
@@ -105,14 +105,14 @@ public class SimpleUIController : MonoBehaviour
         foreach (Transform c in optionsParent) Destroy(c.gameObject);
     }
 
-    void RenderNode() // render current dialogue node
+    void RenderNode() // Render the current dialogue node.
     {
         var node = _dialogue.GetCurrentNode();
         Debug.Log($"[UI] NodeId={_dialogue.CurrentNodeId}, type={node.type}");
-        nodeText.text = node.text; // set node text
+        nodeText.text = node.text; // Set node text.
 
-        ClearOptions(); // remove old buttons
-        vitalsPanel.SetActive(false); // hide vitals panel by default
+        ClearOptions(); // Remove buttons from previous node.
+        vitalsPanel.SetActive(false); // Hide vitals panel by default.
 
         if (node.type == "question" && node.options != null)
         {
@@ -123,7 +123,7 @@ public class SimpleUIController : MonoBehaviour
                 var btn = Instantiate(optionButtonPrefab, optionsParent);
                 btn.GetComponentInChildren<TextMeshProUGUI>().text = opt.label;
 
-                // ✅ nur bei der Triage-Frage: Buttons färben
+                // Color buttons only for the triage selection question.
                 if (isTriageSelect)
                     ApplyTriageColor(btn, opt.key);
 
@@ -135,14 +135,14 @@ public class SimpleUIController : MonoBehaviour
             }
         }
 
-        else if (node.type == "action" ) // if action or info node, just add a "continue" button
+        else if (node.type == "action" ) // For action nodes, either show vitals input or a continue button.
         {
-            // Beispiel: wenn diese Action "check_vitals" enthält → Vitalpanel öffnen
+            // If this action requests vitals check, open the vitals panel.
             if (node.actions != null && node.actions.Contains("check_vitals"))
             {
                 vitalsPanel.SetActive(true);
 
-                // Optional: vorhandene Werte aus State ins UI laden
+                // Optionally preload existing values from dialogue state.
                 if (_dialogue.State.TryGetValue("respRate", out var rr))
                     respRateInput.text = rr.ToString();
                 if (_dialogue.State.TryGetValue("painScale", out var ps))
@@ -150,7 +150,7 @@ public class SimpleUIController : MonoBehaviour
             }
             else
             {
-                // Fallback: nur "Weiter"-Button wie vorher
+                // Fallback: show a single continue button.
                 var btn = Instantiate(optionButtonPrefab, optionsParent);
                 btn.GetComponentInChildren<TextMeshProUGUI>().text = "Weiter";
                 btn.onClick.AddListener(async () =>
@@ -177,23 +177,23 @@ public class SimpleUIController : MonoBehaviour
         }
 
     }
-    // Wird vom Button im VitalsPanel aufgerufen
+    // Called by the confirm button inside the vitals panel.
     public async void OnVitalsConfirmed()
     {
-        // Werte aus den Eingabefeldern in den State schreiben
+        // Write values from input fields into dialogue state.
         if (int.TryParse(respRateInput.text, out var rr))
             _dialogue.State["respRate"] = rr;
 
         if (int.TryParse(painScaleInput.text, out var ps))
         {
             _dialogue.State["painScale"] = ps;
-            _dialogue.State["pain"] = ps >= 1; // pain = true, wenn Skala ≥ 1
+            _dialogue.State["pain"] = ps >= 1; // pain = true when scale is >= 1
         }
 
         if (vitalsPanel != null)
             vitalsPanel.SetActive(false);
 
-        // Action-Node „abschließen“ und weitergehen
+        // Complete the action node and advance.
         await _dialogue.SubmitAnswerAsync("next");
         RenderNode();
     }
@@ -221,7 +221,7 @@ public class SimpleUIController : MonoBehaviour
         scenarioId = newScenarioId;
         Debug.Log($"[SimpleUI] Scenario changed -> scenarioId='{scenarioId}'");
 
-        // AnswerKey neu laden
+        // Reload AnswerKey for the new scenario id.
         var akRepo = new TextAssetAnswerKeyRepository();
         try
         {
@@ -234,7 +234,7 @@ public class SimpleUIController : MonoBehaviour
             Debug.LogWarning($"[SimpleUI] No AnswerKey for {scenarioId}: {e.Message}");
         }
 
-        // Dialog neu starten und UI neu rendern
+        // Reload dialogue state and re-render UI.
         await _dialogue.LoadAsync("polytrauma-01");
         RenderNode();
     }
@@ -271,7 +271,7 @@ public class SimpleUIController : MonoBehaviour
         if (dialogueRoot != null)
             dialogueRoot.SetActive(true);
 
-        // WICHTIG: NICHT RenderNode(); sonst öffnet sich das Overlay sofort wieder (weil current node == "end")
+        // Important: do not call RenderNode() here, otherwise the overlay reopens immediately (current node is still "end").
     }
 
     void ShowResultOverlay()
@@ -282,13 +282,13 @@ public class SimpleUIController : MonoBehaviour
             return;
         }
 
-        // normales UI ausblenden
+        // Hide normal dialogue UI while result overlay is visible.
         if (dialogueRoot != null)
             dialogueRoot.SetActive(false);
 
         resultPanel.SetActive(true);
 
-        // Falls AnswerKey fehlt
+        // Fallback if no AnswerKey was loaded.
         if (_answerKey == null)
         {
             resultHeaderImage.color = new Color(0.5f, 0.5f, 0.5f);
@@ -299,7 +299,7 @@ public class SimpleUIController : MonoBehaviour
 
         var check = AnswerKeyJudge.Compare(_answerKey, _dialogue.ChosenOptionsByNodeId);
 
-        // user triage aus den Klicks holen
+        // Read user's selected triage option from recorded node choices.
         var yourTriage = _dialogue.ChosenOptionsByNodeId.TryGetValue("triage_select", out var t) ? t : "(not selected)";
 
         if (check.isPerfect)

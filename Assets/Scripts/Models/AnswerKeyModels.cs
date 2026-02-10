@@ -2,16 +2,16 @@ using System.Collections.Generic;
 
 namespace VR.Triage.Models
 {
-    // Repräsentiert die JSON-Datei "alex-meyer.json"
+    // Represents one AnswerKey JSON document for a scenario.
     public class AnswerKeyDefinition
     {
         public int schemaVersion;
         public string scenarioId;
-        public string triageExpected; // z.B. "Green"
-        public Dictionary<string, string> answers; // nodeId -> expected optionKey
+        public string triageExpected; // Example: "Green"
+        public Dictionary<string, string> answers; // nodeId -> expected option key
     }
 
-    // Eine einzelne Abweichung: an welchem Node, was erwartet, was tatsächlich gewählt
+    // One mismatch between expected and actual user choice.
     public class AnswerMismatch
     {
         public string nodeId;
@@ -19,7 +19,7 @@ namespace VR.Triage.Models
         public string actualKey;
     }
 
-    // Gesamtergebnis des Checks
+    // Final comparison result with a mismatch list.
     public class AnswerCheckResult
     {
         public bool isPerfect;

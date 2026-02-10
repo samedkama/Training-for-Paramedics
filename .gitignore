@@ -68,8 +68,3 @@ MemoryCaptures/
 
 # --- Unity Cloud Build ---
 unitycloud/
-
-# block secret screenshots
-Assets/images/2.png
-Assets/images/*.png
-

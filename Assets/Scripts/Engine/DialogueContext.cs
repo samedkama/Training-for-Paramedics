@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 public class DialogueContext
 {
-    // Welcher Node ist gerade aktiv?
+    // ID of the node currently active in the dialogue flow.
     public string CurrentNodeId;
 
-    // Override-Ziel, falls eine Action den Flow umleitet
+    // Optional forced next node if an action overrides normal navigation.
     public string ForcedNextNodeId;
 
-    // Einfache State-Map für Effekte (z. B. hrStatus, rrStatus, spo2Status, bpStatus)
+    // Lightweight state map for effect flags (for example hrStatus, rrStatus, spo2Status, bpStatus).
     public Dictionary<string, string> State = new Dictionary<string, string>();
 }
